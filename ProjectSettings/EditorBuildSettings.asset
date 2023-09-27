@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ARSampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GeospatialSampleScene.unity
     guid: bc7d31db86ddb7e41aa8eaaa94f26080
+  - enabled: 1
+    path: Assets/Scenes/TestSceneJosephine.unity
+    guid: 37d87d76656f5ae45bf0a19ffe159fb9
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 49d0a678eff2ba8458022636c4b50608,
       type: 2}
