@@ -55,7 +55,7 @@ public class UiManager : MonoBehaviour
     private bool isFocus = false;
     private bool isProcessing = false;
 
-    //public NativeShare nativeShareManager;
+    public NativeShare nativeShareManager;
 
 
     [SerializeField] const float introTime = 3f;
@@ -155,7 +155,7 @@ public class UiManager : MonoBehaviour
     {
         if (_lastScreenShotTexture == null) return;
 
-        //nativeShareManager.Share(_lastScreenShotTexture);
+        nativeShareManager.Share(_lastScreenShotTexture);
 
         /*
         //ShareImage();
