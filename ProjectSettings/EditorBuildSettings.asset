@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/TestSceneHeba.unity
     guid: 37d87d76656f5ae45bf0a19ffe159fb9
   - enabled: 1
-    path: Assets/Scenes/TestSceneRiley.unity
-    guid: e184ab5b3a48d0947b678c3475c9ae91
+    path: Assets/Scenes/TestSceneDuane.unity
+    guid: f8db0b80aba21c244ab5bee9f957a6d2
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 49d0a678eff2ba8458022636c4b50608,
       type: 2}

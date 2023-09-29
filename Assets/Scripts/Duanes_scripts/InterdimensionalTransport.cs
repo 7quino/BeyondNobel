@@ -1,63 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine;
 
 public class InterdimensionalTransport : MonoBehaviour
 {
-    public Material[] materials;
+    public GameObject ARCamera;
 
+    // Create an array of materials that you can assign in the Inspector.
+    public Material[] EnvironmentMaterials;
 
-    // Start is called before the first frame update
-    void Start()
+    // Update is called once per frame
+    void OnTriggerStay(Collider collider)
     {
-        foreach (var mat in materials)
+        Vector3 camPositionInPortalSpace = transform.InverseTransformPoint(ARCamera.transform.position);
+
+        if (camPositionInPortalSpace.y < 1.0f)
         {
-            mat.SetInt("_StencilTest", (int)CompareFunction.Equal);
-        }
-    }
-
-    void OntriggerStay(Collider other)
-    {
-        if (other.name != "MainCamera")
-            return;
-
-
-        // Outside of other world
-        if (transform.position.z > other.transform.position.z)
-        {
-            UnityEngine.Debug.Log("Outside of other world");
-            foreach (var mat in materials)
+            // Disable Stencil test
+            for (int i = 0; i < EnvironmentMaterials.Length; ++i)
             {
-                mat.SetInt("_StencilTest", (int)CompareFunction.Equal);
+                EnvironmentMaterials[i].SetInt("_StencilComp", (int)CompareFunction.Always);
             }
-            //Inside other dimension
         }
         else
         {
-            UnityEngine.Debug.Log("Inside other world");
-            foreach (var mat in materials)
+            for (int i = 0; i < EnvironmentMaterials.Length; ++i)
             {
-                mat.SetInt("_StencilTest", (int)CompareFunction.NotEqual);
-            }   
-          
-        }
-
-    }
-        
-    void OnDestroy() 
-    {
-        
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        foreach (var mat in materials)
-        {
-            mat.SetInt("_StencilTest", (int)CompareFunction.NotEqual);
+                EnvironmentMaterials[i].SetInt("_StencilComp", (int)CompareFunction.Equal);
+            }
         }
     }
 }
+
