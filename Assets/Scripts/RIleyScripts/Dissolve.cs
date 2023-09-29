@@ -7,13 +7,12 @@ public class Dissolve : MonoBehaviour
     public float dissolveDuration = 6;
     public float dissolveStrength;
 
-    private Material dissolveMaterial; // Cache the material reference.
+    private Material dissolveMaterial; 
 
     private void Start()
     {
-        // Assuming the material is on the same GameObject as this script.
+        
         dissolveMaterial = GetComponent<Renderer>().material;
-        // Initialize dissolveStrength to 0.
         dissolveStrength = 0;
     }
 
