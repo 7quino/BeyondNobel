@@ -7,6 +7,14 @@ public class PeaceController : MonoBehaviour {
     private Camera _camera;
     private bool isRunning = false;
 
+    private void OnEnable() {
+        
+    }
+
+    private void OnDisable() {
+        
+    }
+
     public void Open() {
         StartCoroutine(SetReferences());
     }
