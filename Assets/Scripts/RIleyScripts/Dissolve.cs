@@ -14,6 +14,15 @@ public class Dissolve : MonoBehaviour
         
         dissolveMaterial = GetComponent<Renderer>().material;
         dissolveStrength = 0;
+
+
+        PrizeCategoryButtons.instance.prizeCategoryButtons[0].onButtonClickEnable.AddListener(OnButtonClickActivate);
+        //PrizeCategoryButtons.instance.prizeCategoryButtons[0].onButtonClickDisable.AddListener();
+
+
+
+        //For debug
+        //StartCoroutine(dissolver());
     }
 
     public void OnButtonClickActivate()
