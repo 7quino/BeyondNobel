@@ -6,48 +6,64 @@ using System.Collections.Generic;
 
 public class StortorgetEffectPlacement : MonoBehaviour
 {
-    public Button prizeButtonChemistry; // Reference to the PrizeButtonChemistry button
+    //public Button prizeButtonChemistry; // Reference to the PrizeButtonChemistry button
     public GameObject chemistryEffectPrefab; // Reference to the chemistryeffect prefab
 
-    private ARRaycastManager arRaycastManager;
+    [SerializeField] ARRaycastManager arRaycastManager;
     private Vector3 targetLocation; // The target location for the VFX
-    private bool isEffectActive = false; // Boolean to control the effect's activation state
+
+    [SerializeField] GameObject debugPrefab;
+    [SerializeField] bool debugMode;
+
+    private bool isEffectActive = false; // Track if the effect is currently active
 
     private void Start()
     {
+        debugPrefab.SetActive(false);
         // Initialize the ARRaycastManager
         arRaycastManager = GetComponent<ARRaycastManager>();
 
-        // Assign an event handler to the button click
-        prizeButtonChemistry.onClick.AddListener(ToggleEffect);
+        // Assign event handlers to the button click
+        //prizeButtonChemistry.onClick.AddListener(ActivateEffect);
 
         // Convert geographic coordinates to Unity world space
         Vector2 stortorgetCoordinates = new Vector2(59.3296f, 18.0686f); // Latitude and longitude of Stortorget
         targetLocation = ConvertGeographicToARWorldSpace(stortorgetCoordinates, 63.2f); // Height is 63.2 meters
     }
 
-    private void ToggleEffect()
+    private void ActivateEffect()
     {
-        // Toggle the effect's activation state
-        isEffectActive = !isEffectActive;
-
-        if (isEffectActive)
+        if (!isEffectActive)
         {
-            // Perform a raycast to place the VFX at the target location
-            List<ARRaycastHit> hits = new List<ARRaycastHit>();
-            if (arRaycastManager.Raycast(targetLocation, hits, TrackableType.PlaneWithinPolygon))
+            if (!debugMode)
             {
-                Pose hitPose = hits[0].pose;
-                Instantiate(chemistryEffectPrefab, hitPose.position, Quaternion.identity);
+                // Perform a raycast to place the VFX at the target location
+                List<ARRaycastHit> hits = new List<ARRaycastHit>();
+                if (arRaycastManager.Raycast(targetLocation, hits, TrackableType.PlaneWithinPolygon))
+                {
+                    Pose hitPose = hits[0].pose;
+
+                    // Instantiate the effect
+                    Instantiate(chemistryEffectPrefab, hitPose.position, Quaternion.identity);
+
+                    isEffectActive = true; // Effect is now active
+                }
             }
+            else
+            {
+                debugPrefab?.SetActive(true);
+            }
+            
         }
         else
         {
             // Deactivate the effect if it's currently active
-            GameObject effectInstance = GameObject.FindGameObjectWithTag("ChemistryEffect"); // Assuming "ChemistryEffect" is the tag of your chemistryeffect prefab
+            GameObject effectInstance = GameObject.FindGameObjectWithTag("ChemistryEffect");
+
             if (effectInstance != null)
             {
                 effectInstance.SetActive(false);
+                isEffectActive = false; // Effect is now inactive
             }
         }
     }
