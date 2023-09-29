@@ -29,6 +29,10 @@ public class UiManager : MonoBehaviour
     public GameObject vpsCheckCanvas;
     [SerializeField] GameObject ScreenShotCanvas;
 
+    //LocationServiceMessage
+    [SerializeField] GameObject locationServiceMessageCanvas;
+    [SerializeField] TextMeshProUGUI locationServiceMessage;
+
     //Info button
     [SerializeField] GameObject infoCanvas;
     [SerializeField] GameObject infoBubble1;
@@ -52,8 +56,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] const float pupUpTime = 2f;
 
     //Share button
-    private bool isFocus = false;
-    private bool isProcessing = false;
+    //private bool isFocus = false;
+    //private bool isProcessing = false;
 
     public NativeShare nativeShareManager;
 
@@ -78,9 +82,16 @@ public class UiManager : MonoBehaviour
     {
         arViewCanvas.SetActive(true);
         ScreenSettingsManager.Instance.PanelSafeArea(arViewCanvas.GetComponent<RectTransform>());
+        locationServiceMessageCanvas.SetActive(true);
+        ScreenSettingsManager.Instance.PanelSafeArea(locationServiceMessageCanvas.GetComponent<RectTransform>());
 
         instructionsCanvas.SetActive(false);
         onGameStart.Invoke();
+    }
+
+    public void OnLocationFound()
+    {
+        StartCoroutine(LocationServiceMessage());
     }
 
     public void OnContinueClicked()
@@ -268,7 +279,12 @@ public class UiManager : MonoBehaviour
         popUpMessage.SetActive(false);
     }
 
-
+    IEnumerator LocationServiceMessage()
+    {
+        locationServiceMessage.text = "Location found!";
+        yield return new WaitForSeconds(2.0f);
+        locationServiceMessageCanvas.SetActive(false);
+    }
     
 
 
