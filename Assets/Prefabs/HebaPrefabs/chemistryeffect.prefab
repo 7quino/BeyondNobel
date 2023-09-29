@@ -9,9 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6398913810067809612}
-  - component: {fileID: 649311385565565136}
   - component: {fileID: -1057702906599242238}
-  - component: {fileID: -5672572370258002805}
   m_Layer: 0
   m_Name: chemistryeffect
   m_TagString: Untagged
@@ -34,19 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &649311385565565136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4912232191178496692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb898793194e03f4bb10dba03ec2cb70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_DestroyOnRemoval: 1
 --- !u!114 &-1057702906599242238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,23 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0feb024b770ab4b8f3aea428ce9011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chemistryEffectPrefab: {fileID: 4912232191178496692}
+  earthManager: {fileID: 0}
+  anchorManager: {fileID: 0}
+  latitude: 59.32501592049121
+  longitude: 18.070795230753063
+  altitude: 38
+  quaternion: {x: 0, y: 0, z: 0, w: 0}
+  chemistryEffectPrefab: {fileID: 0}
   arRaycastManager: {fileID: 0}
-  debugPrefab: {fileID: 0}
-  debugMode: 0
---- !u!114 &-5672572370258002805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4912232191178496692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b88bedd8ff2684fa334d3afe693e6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  realWorldHeight: 63.2
-  realWorldArea: 183.64
-  realWorldPerimeter: 183.62
-  realWorldLargeArea: 1906.54
