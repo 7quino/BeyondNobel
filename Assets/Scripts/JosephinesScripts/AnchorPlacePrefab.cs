@@ -13,28 +13,28 @@ public class AnchorPlacePrefab : MonoBehaviour
     [SerializeField] ARAnchorManager anchorManager;
     [SerializeField] double latitude;
     [SerializeField] double longitude;
-    [SerializeField] double altitude;
+    [SerializeField] double altitude = 38;
     [SerializeField] Quaternion quaternion;
     public GameObject anchorPrefab;
     bool coinHolderAnchored = false;
+    //public TextMeshProUGUI debugtext;
 
     public void PlaceAnchor()
     {
         if (coinHolderAnchored) return;
 
-        
-
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
         {
-            var cameraGeospatialPose = earthManager.CameraGeospatialPose;
+            //For getting altitude
+            //var cameraGeospatialPose = earthManager.CameraGeospatialPose;
             //debugtext.text = "\n" + cameraGeospatialPose.Altitude;
 
             var anchorGeo = ARAnchorManagerExtensions.AddAnchor(
                     anchorManager,
                     latitude,
                     longitude,
-                    cameraGeospatialPose.Altitude,
+                    altitude,
                     quaternion);
 
             var anchoredAsset = Instantiate(anchorPrefab, anchorGeo.transform);
