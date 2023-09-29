@@ -6,7 +6,13 @@ using UnityEngine.UI;
 
 public class PrizeCategoryButtons : MonoBehaviour
 {
+    public static PrizeCategoryButtons instance;
     public List<PrizeCategoryButton> prizeCategoryButtons = new List<PrizeCategoryButton>();
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
