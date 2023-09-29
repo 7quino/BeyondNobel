@@ -22,7 +22,7 @@ public class AnchorPlacePrefab : MonoBehaviour
     {
         if (coinHolderAnchored) return;
 
-
+        
 
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
