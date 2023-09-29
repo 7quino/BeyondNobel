@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using TMPro;
 
 public class PrefabEconomics : MonoBehaviour
 {
@@ -16,60 +15,65 @@ public class PrefabEconomics : MonoBehaviour
     [SerializeField] double longitude;
     [SerializeField] double altitude;
     [SerializeField] Quaternion quaternion;
-    //[SerializeField] GameObject economicsPrefab;
+    [SerializeField] GameObject anchorPrefab;
     bool coinHolderAnchored = false;
 
 
     [Header("Prefab behaviour")]
     [SerializeField] GameObject coinPrefab;
-    [SerializeField] Transform coinHolder;
     [SerializeField] int numberCoins;
     [SerializeField] float timeBetweenSpawn;
     [SerializeField] float xzForce;
     [SerializeField] float yForce;
 
-    public TextMeshProUGUI debugtext;
+    [SerializeField] Transform debugCoinHolder;
+    [SerializeField] bool debugMode;
 
-
+    Transform coinHolder;
     List<GameObject> coins = new List<GameObject>();
     IEnumerator spawnCoinsRoutine;
 
+
+    public void PlaceAnchor()
+    {
+        if (coinHolderAnchored) return;
+
+        var earthTrackingState = earthManager.EarthTrackingState;
+        if (earthTrackingState == TrackingState.Tracking)
+        {
+            var cameraGeospatialPose = earthManager.CameraGeospatialPose;
+            //debugtext.text = "\n" + cameraGeospatialPose.Altitude;
+
+            var anchorGeo = ARAnchorManagerExtensions.AddAnchor(
+                    anchorManager,
+                    latitude,
+                    longitude,
+                    cameraGeospatialPose.Altitude,
+                    quaternion);
+
+            var anchoredAsset = Instantiate(anchorPrefab, anchorGeo.transform);
+            anchoredAsset.transform.position = anchorGeo.transform.position;
+            coinHolder = GameObject.Find("CoinHolder").GetComponent<Transform>();
+
+            coinHolderAnchored = true;
+        }
+    }
+
+
+
     public void OnButtonClickActivate()
     {
-        try {
-            if (!coinHolderAnchored)
-            {
-                var earthTrackingState = earthManager.EarthTrackingState;
-                if (earthTrackingState == TrackingState.Tracking)
-                {
-                    var anchor =
-                        ARAnchorManagerExtensions.AddAnchor(
-                            anchorManager,
-                            latitude,
-                            longitude,
-                            altitude,
-                            quaternion);
-                    coinHolder.parent = anchor.transform;
-                    coinHolder.localPosition = Vector3.zero;
-                    coinHolderAnchored = true;
-
-                    debugtext.text = "\n Geoanchor fixed";
-                }
-                else
-                {
-                    //Place with plane tracking
-                    debugtext.text = "\n Place with plane tracking";
-                }
-            }
-
-            spawnCoinsRoutine = SpawnCoins();
-            StartCoroutine(spawnCoinsRoutine);
-            debugtext.text = "\n Economics anchored success";
+        if (!coinHolderAnchored && !debugMode)
+        { 
+            return;
         }
-        catch (Exception e)
+        else if (debugMode)
         {
-            debugtext.text = e.ToString();
+            coinHolder = debugCoinHolder;
         }
+
+        spawnCoinsRoutine = SpawnCoins();
+        StartCoroutine(spawnCoinsRoutine);
     }
 
     public void OnButtonClickDeactivate()
@@ -87,6 +91,7 @@ public class PrefabEconomics : MonoBehaviour
         }
     }
 
+    
     IEnumerator SpawnCoins()
     {
         for (int i = 0; i < numberCoins; i++)
@@ -104,7 +109,4 @@ public class PrefabEconomics : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpawn);
         }
     }
-
-
-
 }

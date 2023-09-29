@@ -21,7 +21,6 @@ public class ScreenSettingsManager : MonoBehaviour
         Screen.orientation = ScreenOrientation.Portrait;
         Application.targetFrameRate = 60;
 
-        Rect safeArea = Screen.safeArea;
         foreach (var screen in screens)
         {
             PanelSafeArea(screen);
@@ -38,9 +37,9 @@ public class ScreenSettingsManager : MonoBehaviour
             // Convert safe area rectangle from absolute pixels to normalised anchor coordinates
             Vector2 anchorMin = safeArea.position;
             Vector2 anchorMax = safeArea.position + safeArea.size;
-            anchorMin.x /= Screen.width;
+            anchorMin.x = 0;
             anchorMin.y /= Screen.height;
-            anchorMax.x /= Screen.width;
+            anchorMax.x = 1;
             anchorMax.y /= Screen.height;
 
             if (anchorMin.x >= 0 && anchorMin.y >= 0 && anchorMax.x >= 0 && anchorMax.y >= 0)
