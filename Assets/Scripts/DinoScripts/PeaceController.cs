@@ -8,11 +8,13 @@ public class PeaceController : MonoBehaviour {
     private bool isRunning = false;
 
     private void OnEnable() {
-        
+        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickEnable.AddListener(Open);
+        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickDisable.AddListener(Close);
     }
 
     private void OnDisable() {
-        
+        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickEnable.RemoveListener(Open);
+        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickDisable.RemoveListener(Close);
     }
 
     public void Open() {
