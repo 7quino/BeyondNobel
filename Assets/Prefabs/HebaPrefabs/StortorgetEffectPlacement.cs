@@ -3,88 +3,80 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using System.Collections.Generic;
+using Google.XR.ARCoreExtensions;
 
 public class StortorgetEffectPlacement : MonoBehaviour
 {
-    //public Button prizeButtonChemistry; // Reference to the PrizeButtonChemistry button
-    public GameObject chemistryEffectPrefab; // Reference to the chemistryeffect prefab
+    [Header("AR anchor")]
+    [SerializeField] AREarthManager earthManager;
+    [SerializeField] ARAnchorManager anchorManager;
+    [SerializeField] double latitude;
+    [SerializeField] double longitude;
+    [SerializeField] double altitude = 38;
+    [SerializeField] Quaternion quaternion;
+    [SerializeField] GameObject chemistryEffectPrefab; // Reference to the chemistryeffect prefab
+    bool prefabAnchored = false;
+    GameObject chemistryPrefabInstance = null;
 
     [SerializeField] ARRaycastManager arRaycastManager;
     private Vector3 targetLocation; // The target location for the VFX
 
-    [SerializeField] GameObject debugPrefab;
-    [SerializeField] bool debugMode;
 
-    private bool isEffectActive = false; // Track if the effect is currently active
 
-    private void Start()
+    public void PlaceAnchor()
     {
-        debugPrefab.SetActive(false);
-        // Initialize the ARRaycastManager
-        arRaycastManager = GetComponent<ARRaycastManager>();
+        if (prefabAnchored) return;
 
-        // Assign event handlers to the button click
-        //prizeButtonChemistry.onClick.AddListener(ActivateEffect);
+        var earthTrackingState = earthManager.EarthTrackingState;
+        if (earthTrackingState == TrackingState.Tracking)
+        {
+            //var cameraGeospatialPose = earthManager.CameraGeospatialPose;
+            //debugtext.text = "\n" + cameraGeospatialPose.Altitude;
 
-        // Convert geographic coordinates to Unity world space
-        Vector2 stortorgetCoordinates = new Vector2(59.3296f, 18.0686f); // Latitude and longitude of Stortorget
-        targetLocation = ConvertGeographicToARWorldSpace(stortorgetCoordinates, 63.2f); // Height is 63.2 meters
+            var anchorGeo = ARAnchorManagerExtensions.AddAnchor(
+                    anchorManager,
+                    latitude,
+                    longitude,
+                    altitude,
+                    quaternion);
+
+            var chemistryPrefabInstance = Instantiate(chemistryEffectPrefab, anchorGeo.transform);
+            chemistryPrefabInstance.transform.position = anchorGeo.transform.position;
+            chemistryPrefabInstance.SetActive(false);
+
+            prefabAnchored = true;
+        }
     }
 
-    private void ActivateEffect()
+
+    public void ActivateEffect()
     {
-        if (!isEffectActive)
+        if (prefabAnchored)
         {
-            if (!debugMode)
-            {
-                // Perform a raycast to place the VFX at the target location
-                List<ARRaycastHit> hits = new List<ARRaycastHit>();
-                if (arRaycastManager.Raycast(targetLocation, hits, TrackableType.PlaneWithinPolygon))
-                {
-                    Pose hitPose = hits[0].pose;
-
-                    // Instantiate the effect
-                    Instantiate(chemistryEffectPrefab, hitPose.position, Quaternion.identity);
-
-                    isEffectActive = true; // Effect is now active
-                }
-            }
-            else
-            {
-                debugPrefab?.SetActive(true);
-            }
-            
+            chemistryPrefabInstance.SetActive(true);
         }
         else
         {
-            // Deactivate the effect if it's currently active
-            GameObject effectInstance = GameObject.FindGameObjectWithTag("ChemistryEffect");
-
-            if (effectInstance != null)
+            //for placing with plane tracking
+            // Perform a raycast to place the VFX at the target location
+            List<ARRaycastHit> hits = new List<ARRaycastHit>();
+            if (arRaycastManager.Raycast(targetLocation, hits, TrackableType.PlaneWithinPolygon))
             {
-                effectInstance.SetActive(false);
-                isEffectActive = false; // Effect is now inactive
+                Pose hitPose = hits[0].pose;
+
+                // Instantiate the effect
+                Instantiate(chemistryEffectPrefab, hitPose.position, Quaternion.identity);
             }
         }
     }
 
-    Vector3 ConvertGeographicToARWorldSpace(Vector2 geoCoordinates, float height)
+
+    public void DeactivateEffect()
     {
-        // Implement the conversion logic to map geographic coordinates to AR world space.
-        // This will depend on your chosen scale and coordinate system.
-        // You may need to apply a scaling factor and offset to align the coordinates correctly.
-
-        // For a simple example, you can assume a flat Earth and a fixed scale.
-        // You may need to adjust this for a more accurate representation.
-        float latitudeToMeters = 111131.75f;
-        float longitudeToMeters = 111131.75f;
-        Vector3 position = new Vector3(
-            (geoCoordinates.y - 18.0686f) * longitudeToMeters,
-            height,
-            (geoCoordinates.x - 59.3296f) * latitudeToMeters
-        );
-
-        return position;
+        if (chemistryPrefabInstance != null)
+        {
+            chemistryPrefabInstance.SetActive(false);
+        }
     }
 }
 

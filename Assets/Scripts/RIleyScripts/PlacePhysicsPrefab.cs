@@ -1,12 +1,11 @@
-using Google.XR.ARCoreExtensions;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using Google.XR.ARCoreExtensions;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-public class AnchorPlacePrefab : MonoBehaviour
+public class PlacePhysicsPrefab : MonoBehaviour
 {
     [Header("AR anchor")]
     [SerializeField] AREarthManager earthManager;
@@ -15,18 +14,22 @@ public class AnchorPlacePrefab : MonoBehaviour
     [SerializeField] double longitude;
     [SerializeField] double altitude = 38;
     [SerializeField] Quaternion quaternion;
-    public GameObject anchorPrefab;
-    bool coinHolderAnchored = false;
-    //public TextMeshProUGUI debugtext;
+    [SerializeField] GameObject anchorPrefab;
+    bool prefabAnchored = false;
+
+    [SerializeField] Transform sun;
+
+
+
+
 
     public void PlaceAnchor()
     {
-        if (coinHolderAnchored) return;
+        if (prefabAnchored) return;
 
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
         {
-            //For getting altitude
             //var cameraGeospatialPose = earthManager.CameraGeospatialPose;
             //debugtext.text = "\n" + cameraGeospatialPose.Altitude;
 
@@ -39,8 +42,14 @@ public class AnchorPlacePrefab : MonoBehaviour
 
             var anchoredAsset = Instantiate(anchorPrefab, anchorGeo.transform);
             anchoredAsset.transform.position = anchorGeo.transform.position;
+            //sun = GameObject.Find("Sun").GetComponent<Transform>();
 
-            coinHolderAnchored = true;
+            prefabAnchored = true;
         }
     }
+
+
+
+
+
 }
