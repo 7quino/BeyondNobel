@@ -39,7 +39,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolveStrength: 0
+    - _DissolveStrength: -0.22
     - _DissolveSun: -0.23
     - _QueueControl: 0
     - _QueueOffset: 0
