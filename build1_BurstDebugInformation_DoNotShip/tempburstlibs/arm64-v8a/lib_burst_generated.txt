@@ -131,9 +131,16 @@ Library: C:\Users\krist\OneDrive\Dokument\GitHub\Nobel\Temp\StagingArea\tempburs
 --compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_PHYSICS2D
 --compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_UI
 --compilation-defines=UNITY_INPUT_SYSTEM
+--compilation-defines=VISUAL_EFFECT_GRAPH_0_0_1_OR_NEWER
 --compilation-defines=ENABLE_BURST_1_0_0_OR_NEWER
 --compilation-defines=USING_ANIMATION_MODULE
 --compilation-defines=USING_PHYSICS2D_MODULE
+--compilation-defines=VFX_HAS_TIMELINE
+--compilation-defines=VFX_HAS_TERRAINMODULE
+--compilation-defines=VFX_HAS_UI
+--compilation-defines=VFX_HAS_PHYSICS
+--compilation-defines=VFX_HAS_AUDIO
+--compilation-defines=VFX_HAS_INPUT_SYSTEM_PACKAGE
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --compilation-defines=USING_PARTICLE_SYSTEM
 --generate-link-xml=Temp\burst.link.xml
