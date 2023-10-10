@@ -10,6 +10,13 @@ public class InterdimensionalTransport : MonoBehaviour
     // Create an array of materials that you can assign in the Inspector.
     public Material[] EnvironmentMaterials;
 
+    public GameObject Environment;
+
+    void Start()
+    {
+        EnvironmentMaterials = Environment.GetComponent<Renderer>().sharedMaterials;
+    }
+
     // Update is called once per frame
     void OnTriggerStay(Collider collider)
     {

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4181297578495768644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4181297578495768647}
+  - component: {fileID: 4181297578495768646}
+  - component: {fileID: 4181297578495768645}
+  m_Layer: 0
+  m_Name: placeAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4181297578495768647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181297578495768644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4181297578495768646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181297578495768644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4540c794f87c7439ca5782e93a3d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  earthManager: {fileID: 0}
+  anchorManager: {fileID: 0}
+  latitude: 59.30141
+  longitude: 18.09099
+  altitude: 60
+  quaternion: {x: 0, y: 0, z: 0, w: 0}
+  anchorPrefab: {fileID: 4819328745277818537, guid: 8a8de0667fa86064e9e13f376f2aa5b7,
+    type: 3}
+--- !u!114 &4181297578495768645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4181297578495768644}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e637feac2f840a14eb7d4bcf1432bf6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ARCamera: {fileID: 0}
+  EnvironmentMaterials:
+  - {fileID: 2100000, guid: b8d7afee0c93918489b47976e4c4dac9, type: 2}
+  Environment: {fileID: 8067667774897152726, guid: e7e510c1d4791bf46bdbe8b09c2289da,
+    type: 3}
