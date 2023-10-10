@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestSceneHeba.unity
     guid: 37d87d76656f5ae45bf0a19ffe159fb9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestSceneDuane.unity
     guid: f8db0b80aba21c244ab5bee9f957a6d2
   - enabled: 0
@@ -26,6 +26,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestSceneRiley.unity
     guid: 4a17d2d80a746e446a0baf7e043b17b4
+  - enabled: 0
+    path: Assets/Scenes/New Scene.unity
+    guid: 89ac8c075dcef184d8968e31fa02893b
+  - enabled: 1
+    path: Assets/Scenes/testSceneDuanecopy.unity
+    guid: 9226f6ae201dfce44b95ff0abd4f91a8
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 49d0a678eff2ba8458022636c4b50608,
       type: 2}
