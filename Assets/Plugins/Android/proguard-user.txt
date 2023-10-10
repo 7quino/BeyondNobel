@@ -169,3 +169,15 @@
 ### Module Progurad Rules ends ###
 =======
 >>>>>>> parent of a2eee9f (shit)
+
+### Module Progurad Rules starts ###
+
+## Default ##
+-keep class com.unity3d.plugin.* { *; }
+
+## LocationModule ##
+-keep class com.google.android.gms.common.** { *; }
+                    -keep class com.google.android.gms.location.** { *; }
+                    -keep class com.google.android.gms.tasks.** { *; }
+
+### Module Progurad Rules ends ###

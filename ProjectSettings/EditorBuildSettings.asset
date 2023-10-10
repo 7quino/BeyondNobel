@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestSceneHeba.unity
     guid: 37d87d76656f5ae45bf0a19ffe159fb9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestSceneDuane.unity
     guid: f8db0b80aba21c244ab5bee9f957a6d2
   - enabled: 0

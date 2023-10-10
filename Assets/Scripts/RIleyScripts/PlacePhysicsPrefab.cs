@@ -47,9 +47,4 @@ public class PlacePhysicsPrefab : MonoBehaviour
             prefabAnchored = true;
         }
     }
-
-
-
-
-
 }
