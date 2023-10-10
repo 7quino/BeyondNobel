@@ -142,6 +142,7 @@
                     -keep class com.google.android.gms.tasks.** { *; }
 
 ### Module Progurad Rules ends ###
+<<<<<<< HEAD
 
 ### Module Progurad Rules starts ###
 
@@ -166,3 +167,5 @@
                     -keep class com.google.android.gms.tasks.** { *; }
 
 ### Module Progurad Rules ends ###
+=======
+>>>>>>> parent of a2eee9f (shit)

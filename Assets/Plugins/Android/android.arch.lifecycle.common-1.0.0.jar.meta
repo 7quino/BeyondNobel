@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 552c24a61b2e90645bd7899bf96857bf
+=======
+guid: 8dcd68425cbe8e84e8396b6eae32e2d3
+>>>>>>> parent of a2eee9f (shit)
 labels:
 - gpsr
 PluginImporter:
