@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c44607487251a947865767a1a5dbee5, type: 2}
+  - {fileID: 2100000, guid: abb980fb4d4fefc4e9b13455adace1a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e637feac2f840a14eb7d4bcf1432bf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ARCamera: {fileID: 0}
-  EnvironmentMaterials: []
+  materials:
+  - {fileID: 2100000, guid: abb980fb4d4fefc4e9b13455adace1a3, type: 2}
+  - {fileID: 2100000, guid: b8d7afee0c93918489b47976e4c4dac9, type: 2}
+  - {fileID: 2100000, guid: cecd25021ea517544af36599ce0d09be, type: 2}
+  meshRenderer: {fileID: 0}
 --- !u!65 &1741140397474700847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -704,7 +707,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7042546169016861753}
   m_Layer: 0
-  m_Name: assets
+  m_Name: environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
