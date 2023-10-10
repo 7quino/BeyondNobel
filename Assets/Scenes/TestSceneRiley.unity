@@ -1242,8 +1242,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 500
-  field of view: 60
+  far clip plane: 5000
+  field of view: 142
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1480,12 +1480,12 @@ PrefabInstance:
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: latitude
-      value: 59.370765
+      value: 59.301344
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: longitude
-      value: 18.175332
+      value: 18.09077
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
