@@ -1730,17 +1730,17 @@ PrefabInstance:
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: altitude
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: latitude
-      value: 59.301386
+      value: 59.343844
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: longitude
-      value: 18.090788
+      value: 18.05148
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}

@@ -16,12 +16,12 @@ public class AnchorPlacePrefab : MonoBehaviour
     [SerializeField] double altitude = 38;
     [SerializeField] Quaternion quaternion;
     public GameObject anchorPrefab;
-    bool coinHolderAnchored = false;
+    bool prefabPhysicsAnchored = false;
     //public TextMeshProUGUI debugtext;
 
     public void PlaceAnchor()
     {
-        if (coinHolderAnchored) return;
+        if (prefabPhysicsAnchored) return;
 
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
@@ -40,7 +40,7 @@ public class AnchorPlacePrefab : MonoBehaviour
             var anchoredAsset = Instantiate(anchorPrefab, anchorGeo.transform);
             anchoredAsset.transform.position = anchorGeo.transform.position;
 
-            coinHolderAnchored = true;
+            prefabPhysicsAnchored = true;
         }
     }
 }
