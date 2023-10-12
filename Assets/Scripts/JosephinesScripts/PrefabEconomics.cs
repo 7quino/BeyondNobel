@@ -13,7 +13,7 @@ public class PrefabEconomics : MonoBehaviour
     [SerializeField] ARAnchorManager anchorManager;
     [SerializeField] double latitude;
     [SerializeField] double longitude;
-    [SerializeField] double altitude = 38;
+    //[SerializeField] double altitude = 38;
     [SerializeField] Quaternion quaternion;
     [SerializeField] GameObject anchorPrefab;
     bool coinHolderAnchored = false;

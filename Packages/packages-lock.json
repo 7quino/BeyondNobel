@@ -18,6 +18,12 @@
       },
       "hash": "92e1dbfdb637b9d29372e3891dcd55194e33d601"
     },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.4",
       "depth": 1,
@@ -326,6 +332,13 @@
         "com.unity.inputsystem": "1.4.4"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.yasirkula.nativeshare": {
+      "version": "https://github.com/yasirkula/UnityNativeShare.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "014d5217ba17c732c5e18188c5c9611a6b91ce01"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

@@ -15,17 +15,23 @@ public class StortorgetEffectPlacement : MonoBehaviour
     [SerializeField] double altitude = 38;
     [SerializeField] Quaternion quaternion;
     [SerializeField] GameObject chemistryEffectPrefab; // Reference to the chemistryeffect prefab
-    bool prefabAnchored = false;
+
+
     GameObject chemistryPrefabInstance = null;
 
     [SerializeField] ARRaycastManager arRaycastManager;
     private Vector3 targetLocation; // The target location for the VFX
 
 
+    private void Start()
+    {
+        
+    }
+
 
     public void PlaceAnchor()
     {
-        if (prefabAnchored) return;
+        if (chemistryPrefabInstance != null) return;
 
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
@@ -40,23 +46,23 @@ public class StortorgetEffectPlacement : MonoBehaviour
                     altitude,
                     quaternion);
 
-            var chemistryPrefabInstance = Instantiate(chemistryEffectPrefab, anchorGeo.transform);
+            chemistryPrefabInstance = Instantiate(chemistryEffectPrefab, anchorGeo.transform);
             chemistryPrefabInstance.transform.position = anchorGeo.transform.position;
             chemistryPrefabInstance.SetActive(false);
-
-            prefabAnchored = true;
         }
     }
 
 
     public void ActivateEffect()
     {
-        if (prefabAnchored)
+        if (chemistryPrefabInstance != null) 
         {
             chemistryPrefabInstance.SetActive(true);
+            return;
         }
         else
         {
+
             //for placing with plane tracking
             // Perform a raycast to place the VFX at the target location
             List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -73,10 +79,9 @@ public class StortorgetEffectPlacement : MonoBehaviour
 
     public void DeactivateEffect()
     {
-        if (chemistryPrefabInstance != null)
-        {
-            chemistryPrefabInstance.SetActive(false);
-        }
+        if (chemistryPrefabInstance == null) return;
+
+        chemistryPrefabInstance.SetActive(false);
     }
 }
 

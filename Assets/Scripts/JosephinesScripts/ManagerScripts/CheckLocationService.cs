@@ -11,7 +11,8 @@ using UnityEngine.XR.ARSubsystems;
 public class CheckLocationService : MonoBehaviour
 {
     public static CheckLocationService Instance;
-    public UnityEvent OnLocationServiceSuccess = new UnityEvent();
+    public UnityEvent onLocationServiceSuccess = new UnityEvent();
+    public UnityEvent onLocationServiceError = new UnityEvent();
     public UnityEvent<string> onDebugMessage = new UnityEvent<string>();
 
     public AREarthManager EarthManager;
@@ -72,6 +73,7 @@ public class CheckLocationService : MonoBehaviour
                 return;
             case FeatureSupported.Unsupported:
                 CheckARSession.Instance.ReturnWithReason("The Geospatial API is not supported by this device.");
+                onLocationServiceError.Invoke();
                 return;
             case FeatureSupported.Supported:
                 if (ARCoreExtensions.ARCoreExtensionsConfig.GeospatialMode ==
@@ -114,6 +116,7 @@ public class CheckLocationService : MonoBehaviour
         }
         else if (earthState != EarthState.Enabled)
         {
+            onLocationServiceError.Invoke();
             string errorMessage = "Geospatial sample encountered an EarthState error: " + earthState;
             onDebugMessage.Invoke(errorMessage);
             return;
@@ -158,7 +161,7 @@ public class CheckLocationService : MonoBehaviour
         else
         {
             // Ready to start game
-            OnLocationServiceSuccess.Invoke();
+            onLocationServiceSuccess.Invoke();
             _localisationServiceOk = true;
             onDebugMessage.Invoke("Ready to start game");
         }
