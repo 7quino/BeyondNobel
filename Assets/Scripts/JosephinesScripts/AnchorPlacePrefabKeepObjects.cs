@@ -5,7 +5,6 @@ using UnityEngine;
 public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
 {
     [Header("Save active assets on hide")]
-    [SerializeField] string tagParent;
     [SerializeField] string tagAssets;
     [SerializeField] int saveCount;
     List<GameObject> objectsToKeep = new List<GameObject>();
@@ -69,7 +68,9 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
 
     void KeepSomeObjects()
     {
-        Transform parentObject = GameObject.FindGameObjectWithTag(tagParent).transform;
+        //Transform parentObject = GameObject.FindGameObjectWithTag(tagParent).transform;
+        /*
+        Transform parentObject = anchoredAsset.transform;
         foreach (Transform child in parentObject)
         {
             if (child.tag == tagAssets)
@@ -77,6 +78,11 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
                 objectsToKeep.Add(child.gameObject);
             }
         }
+        */
+
+        objectsToKeep.AddRange(GameObject.FindGameObjectsWithTag(this.tagAssets));
+
+        if (objectsToKeep.Count == 0) return;
 
         List<int> indexes = new List<int>();
         for (int i = 0; i < saveCount; i++)

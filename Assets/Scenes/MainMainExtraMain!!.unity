@@ -655,6 +655,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 7466108745462575134, guid: 48b22a02f5e71244792b0d0dd111e2c4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -705.99994
+      objectReference: {fileID: 0}
     - target: {fileID: 7466108745519383537, guid: 48b22a02f5e71244792b0d0dd111e2c4,
         type: 3}
       propertyPath: m_Color.b
@@ -879,6 +884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466108746233554821, guid: 48b22a02f5e71244792b0d0dd111e2c4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -705.99994
       objectReference: {fileID: 0}
     - target: {fileID: 7466108746272960995, guid: 48b22a02f5e71244792b0d0dd111e2c4,
         type: 3}
@@ -2648,9 +2658,8 @@ MonoBehaviour:
   quaternion: {x: 0, y: 0, z: 0, w: 0}
   anchorPrefab: {fileID: 7660307663996280560, guid: f31517b3edbee0340947cc69a26e7dc0,
     type: 3}
-  tagParent: 
-  tagAssets: 
-  saveCount: 0
+  tagAssets: EnvironmentAsset
+  saveCount: 3
 --- !u!1001 &1128683496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4100,8 +4109,7 @@ MonoBehaviour:
   quaternion: {x: 0, y: 0, z: 0, w: 0}
   anchorPrefab: {fileID: 7660307663996280560, guid: f31517b3edbee0340947cc69a26e7dc0,
     type: 3}
-  tagParent: EnvironmentAssets
-  tagAssets: WaterCreatures
+  tagAssets: EnvironmentAsset
   saveCount: 2
 --- !u!1 &1773176911 stripped
 GameObject:
