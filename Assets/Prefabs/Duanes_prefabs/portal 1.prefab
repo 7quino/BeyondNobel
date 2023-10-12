@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6968056175258320671}
   - component: {fileID: 7989726175224557337}
   - component: {fileID: 195959410392642180}
-  - component: {fileID: 8274956825406319010}
+  - component: {fileID: 1504193515623676268}
   m_Layer: 0
   m_Name: PortalWindow
   m_TagString: Untagged
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 56c94838294202b4094fd964002a53f8, type: 2}
+  - {fileID: 2100000, guid: a2203b2e8f424dc4db4c0ef2dde99c66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &8274956825406319010
+--- !u!114 &1504193515623676268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,12 +108,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5897221749572020791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e637feac2f840a14eb7d4bcf1432bf6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 39d6ff8b6f4dedf4884121f28c5d8d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ARCamera: {fileID: 0}
-  EnvironmentMaterials:
-  - {fileID: 2100000, guid: ec5cad53e3d43e84dbda349d61006c30, type: 2}
+  MainCamera: {fileID: 0}
+  Environment: {fileID: 7042546169016861754}
+  Materials: []
 --- !u!1 &7042546168234517367
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,12 +141,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7042546168234517367}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0736539, y: 0.25828636, z: 2.335462}
+  m_LocalPosition: {x: 2.892, y: 0.19999993, z: -13.056999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7042546169016861753}
-  m_RootOrder: 3
+  m_Father: {fileID: 7042546168345348824}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7042546168234517364
 MeshFilter:
@@ -241,9 +241,13 @@ Transform:
   m_LocalPosition: {x: -3.965654, y: 0.05828643, z: 15.392462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7042546168618713586}
+  - {fileID: 7042546168569890532}
+  - {fileID: 7042546168234517355}
+  - {fileID: 1491253455514370612}
   m_Father: {fileID: 7042546169016861753}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7042546168345348825
 MeshFilter:
@@ -335,11 +339,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7042546168569890528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.146, y: -0.16, z: 0.87}
+  m_LocalPosition: {x: 4.111654, y: -0.2182864, z: -14.522461}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7042546169016861753}
+  m_Father: {fileID: 7042546168345348824}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7042546168569890533
@@ -432,11 +436,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7042546168618713587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 1.02, z: 9.142462}
+  m_LocalPosition: {x: 3.705654, y: 0.96171355, z: -6.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7042546169016861753}
+  m_Father: {fileID: 7042546168345348824}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7042546168618713591
@@ -530,11 +534,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7042546168618713586}
-  - {fileID: 7042546168569890532}
   - {fileID: 7042546168345348824}
-  - {fileID: 7042546168234517355}
-  - {fileID: 1491253455514370612}
   m_Father: {fileID: 4097530793034476663}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -548,7 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4097530793034476663}
   m_Layer: 0
-  m_Name: portal
+  m_Name: portal 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -599,12 +599,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7666978669027170072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.404, y: 1.382, z: 2.768}
+  m_LocalPosition: {x: 5.3696537, y: 1.3237135, z: -12.624462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7042546169016861753}
-  m_RootOrder: 4
+  m_Father: {fileID: 7042546168345348824}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4078466628557912982
 MeshFilter:

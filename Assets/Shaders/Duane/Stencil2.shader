@@ -3,7 +3,7 @@ Shader "Custom/Stencil2"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        [Enum(Equal,6,NotEqual,3)] _StencilTest ("Stencil Test", int) = 6
+        [Enum(CompareFunction)] _StencilComp("Stencil Comp", int) = 6
     }
     SubShader
     {

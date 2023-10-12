@@ -10,26 +10,57 @@ public class InterdimensionalTransport : MonoBehaviour
     // Create an array of materials that you can assign in the Inspector.
     public Material[] EnvironmentMaterials;
 
-    // Update is called once per frame
-    void OnTriggerStay(Collider collider)
+    void Start()
     {
-        Vector3 camPositionInPortalSpace = transform.InverseTransformPoint(ARCamera.transform.position);
-
-        if (camPositionInPortalSpace.y < 1.0f)
+        foreach (var mat in EnvironmentMaterials)
         {
-            // Disable Stencil test
-            for (int i = 0; i < EnvironmentMaterials.Length; ++i)
+            mat.SetInt("_StencilTest", (int)CompareFunction.Equal);
+        }
+    }
+
+    // Update is called once per frame
+    void OnTriggerStay(Collider other)
+    {
+
+
+        if (other.CompareTag("MainCamera"))
+            return;
+
+
+        // outside other world
+        if (transform.position.z > other.transform.position.z)
+        {
+           
+            foreach (var mat in EnvironmentMaterials)
             {
-                EnvironmentMaterials[i].SetInt("_StencilComp", (int)CompareFunction.Always);
+                mat.SetInt("_StencilTest", (int)CompareFunction.Equal);
             }
+            //inside other dimension
         }
         else
         {
-            for (int i = 0; i < EnvironmentMaterials.Length; ++i)
+            
+            foreach (var mat in EnvironmentMaterials)
             {
-                EnvironmentMaterials[i].SetInt("_StencilComp", (int)CompareFunction.Equal);
+                mat.SetInt("_StencilTest", (int)CompareFunction.NotEqual);
             }
         }
     }
+
+    void Ondestroy()
+    {
+        foreach (var mat in EnvironmentMaterials)
+        {
+            mat.SetInt("_StencilTest", (int)CompareFunction.NotEqual);
+        }
+    }
+
+    void Update()
+    {
+
+    }
+
+
+
 }
 
