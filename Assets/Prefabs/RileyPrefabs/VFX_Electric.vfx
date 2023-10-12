@@ -101,28 +101,13 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614815}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614837}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614817}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614842}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614832}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614834}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614844}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614850}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614869}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614846}
@@ -142,9 +127,6 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614871}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614873}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614768}
       id: 4
       isStickyNote: 0
@@ -154,34 +136,10 @@ MonoBehaviour:
     - model: {fileID: 8926484042661614875}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661614890}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614901}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614916}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661614938}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614906}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614909}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614910}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614912}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614940}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614947}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614942}
@@ -191,12 +149,6 @@ MonoBehaviour:
       id: 2
       isStickyNote: 0
     - model: {fileID: 8926484042661614904}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614952}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661614972}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661614768}
@@ -12594,7 +12546,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2485, y: 440}
+  m_UIPosition: {x: 2498, y: 458}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
