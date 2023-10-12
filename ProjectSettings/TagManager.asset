@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Square
   - Coin
+  - cubeAnchored
   layers:
   - Default
   - TransparentFX
