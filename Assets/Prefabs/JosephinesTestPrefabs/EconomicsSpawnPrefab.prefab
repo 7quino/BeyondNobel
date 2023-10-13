@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526607142399349006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526607142399349006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 2550244505881196133}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Square
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5385465459837190066}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -305,18 +305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b112458d1f181f4d9b90e9a00f6303b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earthManager: {fileID: 0}
-  anchorManager: {fileID: 0}
-  latitude: 0
-  longitude: 0
-  altitude: 38
-  quaternion: {x: 0, y: 0, z: 0, w: 0}
-  anchorPrefab: {fileID: 0}
   coinPrefab: {fileID: 6150332785300090085, guid: 9697b3e0ff212af4e8c3d0fe3a2ef40f,
     type: 3}
   numberCoins: 200
   timeBetweenSpawn: 0.05
-  xzForce: 10
-  yForce: 20
-  debugCoinHolder: {fileID: 1236554490431816140}
-  debugMode: 0
+  xzForce: 5
+  yForce: 10
+  coinHolder: {fileID: 1236554490431816140}

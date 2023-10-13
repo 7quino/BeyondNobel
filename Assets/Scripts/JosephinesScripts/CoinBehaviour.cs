@@ -6,12 +6,10 @@ using UnityEngine;
 public class CoinBehaviour : MonoBehaviour
 {
     [SerializeField] List<AudioClip> coinClips;
-
-
     [SerializeField] Transform coinTop;
     [SerializeField] Transform coinBottom;
-    [SerializeField] Transform coinTopGrowth;
-    [SerializeField] Transform coinBottomGrowth;
+    [SerializeField] Transform topPivot;
+    [SerializeField] Transform bottomPivot;
 
     AudioSource audioSource;
     AudioClip coinClip;
@@ -25,7 +23,7 @@ public class CoinBehaviour : MonoBehaviour
             
             this.GetComponent<Rigidbody>().isKinematic = true;
 
-            _ = coinTop.position.y > coinBottom.position.y ? StartCoroutine(GrowCoin(coinBottomGrowth)) : StartCoroutine(GrowCoin(coinTopGrowth));
+            _ = topPivot.position.y < bottomPivot.position.y ? StartCoroutine(GrowCoin(coinBottom)) : StartCoroutine(GrowCoin(coinTop));
         }
     }
 
