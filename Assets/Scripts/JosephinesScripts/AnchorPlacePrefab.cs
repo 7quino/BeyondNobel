@@ -43,8 +43,8 @@ public class AnchorPlacePrefab : MonoBehaviour
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
         {
-            //For getting altitude
-            //var cameraGeospatialPose = earthManager.CameraGeospatialPose;
+            //For getting altitude camera
+            var cameraGeospatialPose = earthManager.CameraGeospatialPose;
             //debugtext.text = "\n" + cameraGeospatialPose.Altitude;
 
             anchorGeo = ARAnchorManagerExtensions.AddAnchor(
@@ -52,7 +52,11 @@ public class AnchorPlacePrefab : MonoBehaviour
                     latitude,
                     longitude,
                     altitude,
+                    //cameraGeospatialPose.Altitude,
                     quaternion);
+
+            //For testing
+            //ShowButton();
         }
     }
 

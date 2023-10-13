@@ -88,6 +88,12 @@ public class UiManager : MonoBehaviour
         onGameStart.Invoke();
     }
 
+    public void OnLocationServiceFinniched(string message)
+    {
+        locationServiceMessageCanvas.SetActive(false);
+        StartCoroutine(PopUpMessage(message, 2.0f));
+    }
+
     public void OnContinueClicked()
     {
         vpsCheckCanvas.SetActive(false);
@@ -192,8 +198,8 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
-        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => PopUpMessage("Location found!", 2.0f));
-        CheckLocationService.Instance.onLocationServiceError.AddListener(() => PopUpMessage("No location service,\nusing plan B", 2.0f));
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => OnLocationServiceFinniched("Location found!"));
+        CheckLocationService.Instance.onLocationServiceError.AddListener(() => OnLocationServiceFinniched("No location service,\nusing plan B"));
         
         StartCoroutine(IntroSequence());
     }
