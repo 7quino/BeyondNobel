@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using static NativeGallery;
 using TMPro;
+using System.IO;
 
 public class UiManager : MonoBehaviour
 {
@@ -59,8 +60,6 @@ public class UiManager : MonoBehaviour
     //private bool isFocus = false;
     //private bool isProcessing = false;
 
-    public NativeShare nativeShareManager;
-
 
     [SerializeField] const float introTime = 3f;
     const string _hasDisplayedPrivacyPromptKey = "HasDisplayedGeospatialPrivacyPrompt";
@@ -87,11 +86,6 @@ public class UiManager : MonoBehaviour
 
         instructionsCanvas.SetActive(false);
         onGameStart.Invoke();
-    }
-
-    public void OnLocationFound()
-    {
-        StartCoroutine(LocationServiceMessage());
     }
 
     public void OnContinueClicked()
@@ -165,17 +159,7 @@ public class UiManager : MonoBehaviour
     public void OnShareClicked()
     {
         if (_lastScreenShotTexture == null) return;
-
-        nativeShareManager.Share(_lastScreenShotTexture);
-
-        /*
-        //ShareImage();
-        byte[] bytes = _lastScreenShotTexture.EncodeToPNG();
-        string screenshotPath = Application.persistentDataPath + "/screenshot.png";
-        File.WriteAllBytes(screenshotPath, bytes);
-
-        StartCoroutine(ShareScreenshotCoroutine(screenshotPath));
-        */
+        StartCoroutine(ShareScreenShot());
     }
 
     public void OnThrowAwayClicked()
@@ -208,6 +192,9 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => PopUpMessage("Location found!", 2.0f));
+        CheckLocationService.Instance.onLocationServiceError.AddListener(() => PopUpMessage("No location service,\nusing plan B", 2.0f));
+        
         StartCoroutine(IntroSequence());
     }
 
@@ -260,6 +247,30 @@ public class UiManager : MonoBehaviour
         screenShotImage.sprite = Sprite.Create(screenShotTexture, rec, new Vector2(0, 0), .01f);
     }
 
+    IEnumerator ShareScreenShot()
+    {
+        yield return new WaitForEndOfFrame();
+
+        Texture2D ss = _lastScreenShotTexture;
+        string filePath = Path.Combine(Application.temporaryCachePath, "shared img.png");
+        File.WriteAllBytes(filePath, ss.EncodeToPNG());
+        Destroy(ss);
+
+        new NativeShare().AddFile(filePath)
+            .SetSubject("Subject goes here").SetText("Hello world!").SetUrl("https://github.com/yasirkula/UnityNativeShare")
+            .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
+            .Share();
+
+        /*
+        if (NativeShare.TargetExists("com.whatsapp"))
+            new NativeShare().AddFile(filePath).AddTarget("com.whatsapp").Share();
+        if (NativeShare.TargetExists("com.facebook"))
+            new NativeShare().AddFile(filePath).AddTarget("com.facebook").Share();
+        if (NativeShare.TargetExists("com.facebook"))
+            new NativeShare().AddFile(filePath).AddTarget("com.facebook").Share();
+        */
+    }
+
     void QuitScreenShotMode()
     {
         arViewCanvas.SetActive(true);
@@ -268,24 +279,20 @@ public class UiManager : MonoBehaviour
         _imageSaved = false;
     }
 
-    IEnumerator PopUpMessage(string message)
+
+    public void ShowMessage(string message)
+    {
+        StartCoroutine(PopUpMessage(message));
+    }
+
+    IEnumerator PopUpMessage(string message, float time = pupUpTime)
     {
         messageText.text = message;
         popUpMessage.SetActive(true);
 
-        yield return new WaitForSeconds(pupUpTime);
+        yield return new WaitForSeconds(time);
 
         messageText.text = string.Empty;
         popUpMessage.SetActive(false);
     }
-
-    IEnumerator LocationServiceMessage()
-    {
-        locationServiceMessage.text = "Location found!";
-        yield return new WaitForSeconds(2.0f);
-        locationServiceMessageCanvas.SetActive(false);
-    }
-    
-
-
 }

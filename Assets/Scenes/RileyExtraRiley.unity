@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1303,7 +1303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1058467113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1730,17 +1730,17 @@ PrefabInstance:
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: altitude
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: latitude
-      value: 59.301386
+      value: 59.301082
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: longitude
-      value: 18.090788
+      value: 18.090995
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}

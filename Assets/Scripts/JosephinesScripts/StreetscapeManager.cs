@@ -61,7 +61,7 @@ public class StreetscapeManager : MonoBehaviour
 
     private void Start()
     {
-        CheckLocationService.Instance.OnLocationServiceSuccess.AddListener(OnLocationServiceSuccess);
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(OnLocationServiceSuccess);
     }
 
 

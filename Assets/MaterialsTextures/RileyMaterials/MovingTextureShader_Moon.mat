@@ -35,14 +35,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistortionScale: 29.3
-    - _NoisePower: 0.3
-    - _NoiseScale: 119.38
+    - _DistortionScale: 16.76
+    - _NoisePower: -0.95
+    - _NoiseScale: 116.57
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _TwirlStrength: -0.6
+    - _TwirlStrength: -1.5
     m_Colors:
-    - _BaseColor: {r: 7.4642644, g: 7.4642644, b: 7.4642644, a: 0}
+    - _BaseColor: {r: 3.2111173, g: 3.2111173, b: 3.2111173, a: 0}
     - _PanSpeed: {r: 0.01, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2557836819464974677

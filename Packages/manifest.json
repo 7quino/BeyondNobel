@@ -2,6 +2,7 @@
   "dependencies": {
     "com.coffee.softmask-for-ugui": "https://github.com/mob-sakai/SoftMaskForUGUI.git",
     "com.google.ar.core.arfoundation.extensions": "https://github.com/google-ar/arcore-unity-extensions.git",
+    "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "2.0.3",
     "com.unity.feature.ar": "1.0.0",
     "com.unity.ide.rider": "3.0.20",
@@ -16,6 +17,7 @@
     "com.unity.visualeffectgraph": "12.1.11",
     "com.unity.xr.arcore": "4.2.8",
     "com.unity.xr.arkit": "4.2.8",
+    "com.yasirkula.nativeshare": "https://github.com/yasirkula/UnityNativeShare.git",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
