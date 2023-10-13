@@ -17,6 +17,8 @@ public class PortalManager : MonoBehaviour
     // use this for initialization
     void Start()
     {
+        MainCamera = Camera.main.gameObject;
+
         foreach (var rend in Renderers) {
             Materials.Add(rend.material);
         }
@@ -24,7 +26,8 @@ public class PortalManager : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         Debug.Log($"{other.name} has entered the building!");
-        MainCamera = Camera.main.gameObject;
+
+        //MainCamera = Camera.main.gameObject;
     }
     void OnTriggerExit(Collider other) {
         Debug.Log($"{other.name} has left the building!");

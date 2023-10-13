@@ -59,6 +59,12 @@ public class PrefabEconomics : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        coinHolder = GameObject.Find("CoinHolder").GetComponent<Transform>();
+        OnButtonClickActivate();
+    }
+
 
     public void OnButtonClickActivate()
     {
