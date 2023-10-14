@@ -62,9 +62,11 @@ public class AnchorPlacePrefab : MonoBehaviour
 
     public virtual void ShowButton()
     {
+
 #if UNITY_EDITOR
         anchoredAsset = Instantiate(anchorPrefab, new Vector3(0,0,4), Quaternion.identity);
 #endif
+
 
         buttonIsActive = true;
 
@@ -74,14 +76,20 @@ public class AnchorPlacePrefab : MonoBehaviour
             anchoredAsset.transform.position = anchorGeo.transform.position;
         }
 
+
+        if (anchorGeo == null && anchoredAsset == null)
+        {
+            UiManager.instance.locationServiceMessage.text = "Still searching\nfor location!";
+        }
+
         if (locationServiceFailure && anchoredAsset == null)
         {
-            UiManager.instance.ShowMessage("tap to place experience");
+            UiManager.instance.ShowMessage("Tap to place experience!");
 
             //Exchange update function to coroutine
-            StartCoroutine(PlaceWithPlaneTracking());
+            //StartCoroutine(PlaceWithPlaneTracking());
         }
-        else
+        else if (locationServiceFailure)
         {
             anchoredAsset.SetActive(true);
         }

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using static NativeGallery;
 using TMPro;
 using System.IO;
+using System;
 
 public class UiManager : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class UiManager : MonoBehaviour
 
     //LocationServiceMessage
     [SerializeField] GameObject locationServiceMessageCanvas;
-    [SerializeField] TextMeshProUGUI locationServiceMessage;
+    public TextMeshProUGUI locationServiceMessage;
+    bool locationServiceIsFinnished = false;
 
     //Info button
     [SerializeField] GameObject infoCanvas;
@@ -151,15 +153,28 @@ public class UiManager : MonoBehaviour
 
         byte[] mediaBytes = _lastScreenShotTexture.EncodeToPNG();
 
-        //System.IO.File.WriteAllBytes(Application.dataPath + "/screenshot.png", mediaBytes); //PC
+#if UNITY_EDITOR
+        System.IO.File.WriteAllBytes(Application.dataPath + "/screenshot.png", mediaBytes);
+#endif
+
+        StartCoroutine(PopUpMessage("1"));
+
+        
         NativeGallery.Permission permission = SaveImageToGallery(mediaBytes, "NobelAR", Time.time.ToString());
-        //NativeGallery.Permission permission2 = SaveImageToGallery(_lastScreenShotTexture, "NobelAR", Time.time.ToString());
+
+        StartCoroutine(PopUpMessage("2"));
+
+        NativeGallery.Permission permission2 = SaveImageToGallery(_lastScreenShotTexture, "NobelAR", Time.time.ToString());
+
+        StartCoroutine(PopUpMessage("3"));
 
         onDebugMessage.Invoke("Save screenshot: " + permission.ToString());
 
         string message = permission == Permission.Granted ? "Image saved to camera roll" : "Image save failed";
         StartCoroutine(PopUpMessage(message));
         if (permission == Permission.Granted) _imageSaved = true;
+        
+        
     }
 
     public void OnShareClicked()
@@ -235,6 +250,7 @@ public class UiManager : MonoBehaviour
     {
         _imageSaved = false;
         UICanvas.SetActive(false);
+        if (!locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(false);
 
         yield return new WaitForEndOfFrame();
 
@@ -280,6 +296,8 @@ public class UiManager : MonoBehaviour
     void QuitScreenShotMode()
     {
         arViewCanvas.SetActive(true);
+        if (!locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(true);
+        if (popUpMessage.activeInHierarchy) popUpMessage.SetActive(false);
         ScreenShotCanvas.SetActive(false);
         _lastScreenShotTexture = null;
         _imageSaved = false;
