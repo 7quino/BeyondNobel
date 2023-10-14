@@ -32,14 +32,19 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
             anchoredAsset.transform.position = anchorGeo.transform.position;
         }
 
+        if (anchorGeo == null && anchoredAsset == null)
+        {
+            UiManager.instance.locationServiceMessage.text = "Wait for location!";
+        }
+
         if (locationServiceFailure && anchoredAsset == null)
         {
-            UiManager.instance.ShowMessage("tap to place experience");
+            UiManager.instance.ShowMessage("tap to place experience!");
 
             //Exchange update function to coroutine
             StartCoroutine(PlaceWithPlaneTracking());
         }
-        else
+        else if(locationServiceFailure)
         {
             anchoredAsset.SetActive(true);
         }
@@ -60,7 +65,7 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
             KeepSomeObjects();
             Destroy(anchoredAsset);
         }
-        else
+        else if (locationServiceFailure)
         {
             anchoredAsset.SetActive(false);
         }
@@ -68,18 +73,6 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
 
     void KeepSomeObjects()
     {
-        //Transform parentObject = GameObject.FindGameObjectWithTag(tagParent).transform;
-        /*
-        Transform parentObject = anchoredAsset.transform;
-        foreach (Transform child in parentObject)
-        {
-            if (child.tag == tagAssets)
-            {
-                objectsToKeep.Add(child.gameObject);
-            }
-        }
-        */
-
         objectsToKeep.AddRange(GameObject.FindGameObjectsWithTag(this.tagAssets));
 
         if (objectsToKeep.Count == 0) return;
