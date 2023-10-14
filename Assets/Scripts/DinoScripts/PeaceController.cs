@@ -2,50 +2,37 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class PeaceController : MonoBehaviour {
-    private Camera _camera;
-    private bool isRunning = false;
+    [SerializeField] private GameObject _nuke;
+    [SerializeField] private List<Transform> _nukeSpawnPoints;
 
-    private void OnEnable() {
-        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickEnable.AddListener(Open);
-        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickDisable.AddListener(Close);
-    }
-
-    private void OnDisable() {
-        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickEnable.RemoveListener(Open);
-        PrizeCategoryButtons.instance.prizeCategoryButtons[5].onButtonClickDisable.RemoveListener(Close);
-    }
-
+    public Transform _limiter;
+    
+    
     public void Open() {
-        StartCoroutine(SetReferences());
+        StartCoroutine(Tick());
     }
 
     public void Close() {
-        isRunning = false;
+        StopCoroutine(Tick());
     }
     
-    IEnumerator SetReferences() {
-        _camera = Camera.main;
-        
-        yield return new WaitUntil(() => {
-            return _camera != null;
-        });
-
-        StartCoroutine(StartGame());
-    }
-    
-
-    IEnumerator StartGame() {
-        isRunning = true;
-        yield return null;
-    }
-
-    IEnumerator GameLoop() {
-        while (isRunning) {
-            
+    IEnumerator Tick() {
+        while (true) {
+            yield return new WaitForSeconds(Random.Range(1, 5));
+            var randomSpawnNumber = Random.Range(
+                0, 
+                _nukeSpawnPoints.Count
+                );
+            Instantiate(
+                _nuke, 
+                _nukeSpawnPoints[randomSpawnNumber].position,
+                _nukeSpawnPoints[randomSpawnNumber].rotation
+                );
         }
-
         yield return null;
     }
 }
