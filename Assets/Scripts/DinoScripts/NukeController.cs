@@ -11,12 +11,16 @@ public class NukeController : MonoBehaviour {
 
     private void OnEnable() {
         StartCoroutine(Fly());
+        transform.LookAt(_peaceController._limiter);
+    }
+
+    private void Update() {
+        transform.Translate(Vector3.forward * 100 * Time.deltaTime);
     }
 
     IEnumerator Fly() {
-        var randomLimiterOffset = Random.Range(0, 5);
+        var randomLimiterOffset = Random.Range(-10, 10);
         var limiter = _peaceController._limiter;
-        transform.Translate(transform.forward);
         yield return new WaitWhile(
             () => transform.position.y < 
                   limiter.position.y 
@@ -25,8 +29,8 @@ public class NukeController : MonoBehaviour {
         Instantiate(
             _fireworkPrefab, 
             transform.position, 
-            Quaternion.identity
+            Quaternion.RotateTowards(transform.rotation, Camera.main.transform.rotation, 0.1f)
             ); 
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 0.01f);
     }
 }

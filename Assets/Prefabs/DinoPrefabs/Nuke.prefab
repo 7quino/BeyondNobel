@@ -156,7 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bab168aa810c554e9ec01effb8b9bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireworkPrefab: {fileID: 7223134314242015674, guid: f35628a26e0154b12bb2c4092bd1255e,
+  _fireworkPrefab: {fileID: 712503405949416647, guid: 19227641cc1c710419ac50b9752080f1,
+    type: 3}
+  _peaceController: {fileID: 2014866592946293878, guid: 3d67c88721855844e84e358222f70b53,
     type: 3}
 --- !u!1001 &2009591809364679050
 PrefabInstance:
