@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_sv
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: sv
+  m_SharedData: {fileID: 11400000, guid: 42da0af3a94349c43a3d00bf3df32097, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 86020382720
+    m_Localized: Debug Info.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 659885056000
+    m_Localized: Debug Info LocationService
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833546018816
+    m_Localized: Letar efter plats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 858988666880
+    m_Localized: Bild har sparats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 885702189056
+    m_Localized: "Lokaliserar din enhet f\xF6r att st\xE4lla in anchor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 931189415936
+    m_Localized: "Forts\xE4tt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960981557248
+    m_Localized: "Tryck p\xE5 priset\nkategoriknappar till\nv\xE4xla AR-lager p\xE5
+      eller av"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1006846271488
+    m_Localized: "Tryck p\xE5 priset kategoriknappar till v\xE4xla AR-lager p\xE5
+      eller av"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1033777897472
+    m_Localized: "Ta AR-bilder och dela dom p\xE5 sociala medier.\nHa det kul!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1077218304000
+    m_Localized: Okej
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1103835357184
+    m_Localized: "Ta AR-bilder och\ndela p\xE5 sociala medier"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1147594530816
+    m_Localized: "VPS inte tillg\xE4nglig"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1182830878720
+    m_Localized: "AR i den verkliga v\xE4rlden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1201705246720
+    m_Localized: INSTRUKTIONER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783772213248
+    m_Localized: 'GEOSPATIAL VPS
+
+      LAT/LONG: xxx, xxx
+
+      HorizontalAcc:
+      xxx
+
+      ALTITUDE: xxx
+
+      VerticalAcc: xxx
+
+      HEADINGL: xxx
+
+      HeadingAcc:
+      xxx'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21475964149760
+    m_Localized: "Din nuvarande plats har inte VPS-t\xE4ckning. Din session kommer
+      endast att anv\xE4nda din GPS-signal om VPS inte \xE4r tillg\xE4ngligt."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21618750840832
+    m_Localized: "F\xF6r att driva den h\xE4r sessionen kommer Google att bearbeta
+      visuell data fr\xE5n din kamera. <b><color=#bf0276>L\xE4s mer</color></b>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21744907116544
+    m_Localized: "K\xF6r"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

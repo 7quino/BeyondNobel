@@ -14,9 +14,19 @@ public class CoinBehaviour : MonoBehaviour
     AudioSource audioSource;
     AudioClip coinClip;
 
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        coinClip = coinClips[Random.Range(0, coinClips.Count - 1)];
+        audioSource.clip = coinClip;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        audioSource.PlayOneShot(coinClip);
+        if (collision.gameObject.tag == "Square" || collision.gameObject.tag == "Coin")
+        {
+            audioSource.PlayOneShot(coinClip);
+        }
 
         if (collision.gameObject.tag == "Square")
         {
@@ -25,14 +35,6 @@ public class CoinBehaviour : MonoBehaviour
 
             _ = topPivot.position.y < bottomPivot.position.y ? StartCoroutine(GrowCoin(coinBottom)) : StartCoroutine(GrowCoin(coinTop));
         }
-    }
-
-
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-        coinClip = coinClips[Random.Range(0, coinClips.Count - 1)];
-        audioSource.clip = coinClip;
     }
 
     IEnumerator GrowCoin(Transform coinTransform)
