@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: e26170d6198ffae41882e13e67551fce
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: a2203b2e8f424dc4db4c0ef2dde99c66
+    m_Address: Assets/Shaders/Duane/Imported/Materials/Unlit_PortalPlane.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4022d6945d6b2e342bf04367b9dfc32c, type: 2}
   m_SchemaSet:
