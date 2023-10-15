@@ -10,7 +10,11 @@ using UnityEngine.Localization.Settings;
 public class LanguageManager : MonoBehaviour {
 
     private bool active = false;
-    
+
+    private void Start() {
+        StartCoroutine(SetLocale(0));
+    }
+
     public void ChangeLocale(int localeID) {
         if (active) return;
         StartCoroutine(SetLocale(localeID));
