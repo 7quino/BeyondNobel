@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 42da0af3a94349c43a3d00bf3df32097, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 86020382720
+    m_Localized: Debug Info.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 659885056000
+    m_Localized: Debug Info LocationService
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783772213248
+    m_Localized: 'GEOSPATIAL VPS
+
+      LAT/LONG: xxx, xxx
+
+      HorizontalAcc:
+      xxx
+
+      ALTITUDE: xxx
+
+      VerticalAcc: xxx
+
+      HEADINGL: xxx
+
+      HeadingAcc:
+      xxx'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 833546018816
+    m_Localized: Searching for location...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 858988666880
+    m_Localized: Image successfully saved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 885702189056
+    m_Localized: Localizing your device to set anchor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 931189415936
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 960981557248
+    m_Localized: "Press the prize \ncategory buttons to \ntoogle AR layers on/off"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1006846271488
+    m_Localized: Press the prize category buttons to toogle AR layers on/off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1033777897472
+    m_Localized: 'Take AR photos and share on social media. Have fun (:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1077218304000
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1103835357184
+    m_Localized: "Take AR photos and \nshare on social media"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1147594530816
+    m_Localized: 'VPS not available
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1182830878720
+    m_Localized: AR in the real world
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1201705246720
+    m_Localized: INSTRUCTIONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21475964149760
+    m_Localized: Your current location does not have VPS coverage. Your session will
+      be using your GPS signal only if VPS is not available.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21618750840832
+    m_Localized: To power this session, Google will process visual data from your
+      camera. <b><color=#bf0276>Learn more</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21744907116544
+    m_Localized: Get started
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

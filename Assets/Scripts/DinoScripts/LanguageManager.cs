@@ -4,28 +4,22 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Localization.Settings;
 
 
 public class LanguageManager : MonoBehaviour {
-    public class English {
-        public string[] fields;
-    }
 
-    public class Swedish {
-        public string[] fields;
+    private bool active = false;
+    
+    public void ChangeLocale(int localeID) {
+        if (active) return;
+        StartCoroutine(SetLocale(localeID));
     }
     
-    [Serializable]
-    public class Languages {
-        public English englishFields;
-        public Swedish swedishFields;
-    }
-    
-    public List<TMP_Text> orderedTextToTranslate;
-    public TextAsset translationData;
-    private IEnumerator Start() {
-        var translationText = JsonUtility.FromJson<Languages>(translationData.text);
-        yield return new WaitUntil(() => translationText != null);
-        
+    IEnumerator SetLocale(int _localeID) {
+        active = true;
+        yield return LocalizationSettings.InitializationOperation;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
+        active = false;
     }
 }
