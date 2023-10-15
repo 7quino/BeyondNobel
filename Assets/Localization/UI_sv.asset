@@ -27,15 +27,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 833546018816
-    m_Localized: Letar efter plats
+    m_Localized: "S\xF6ker efter platsen..."
     m_Metadata:
       m_Items: []
   - m_Id: 858988666880
-    m_Localized: Bild har sparats
+    m_Localized: Bilden har sparats
     m_Metadata:
       m_Items: []
   - m_Id: 885702189056
-    m_Localized: "Lokaliserar din enhet f\xF6r att st\xE4lla in anchor."
+    m_Localized: "Lokaliserar enheten f\xF6r att placera ankare."
     m_Metadata:
       m_Items: []
   - m_Id: 931189415936
@@ -43,21 +43,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 960981557248
-    m_Localized: "Tryck p\xE5 priset\nkategoriknappar till\nv\xE4xla AR-lager p\xE5
-      eller av"
+    m_Localized: "Tryck p\xE5 pris-\nkategoriknapparna f\xF6r att\nv\xE4xla AR-lager
+      p\xE5/av"
     m_Metadata:
       m_Items: []
   - m_Id: 1006846271488
-    m_Localized: "Tryck p\xE5 priset kategoriknappar till v\xE4xla AR-lager p\xE5
-      eller av"
+    m_Localized: "Tryck p\xE5 pris-kategoriknapparns f\xF6r att v\xE4xla AR-lager
+      p\xE5/av"
     m_Metadata:
       m_Items: []
   - m_Id: 1033777897472
-    m_Localized: "Ta AR-bilder och dela dom p\xE5 sociala medier.\nHa det kul!"
+    m_Localized: "Ta AR-bilder och dela dom p\xE5 sociala medier. Ha s\xE5 kul!"
     m_Metadata:
       m_Items: []
   - m_Id: 1077218304000
-    m_Localized: Okej
+    m_Localized: OK
     m_Metadata:
       m_Items: []
   - m_Id: 1103835357184
@@ -105,7 +105,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 21744907116544
-    m_Localized: "K\xF6r"
+    m_Localized: "K\xD6R!"
     m_Metadata:
       m_Items: []
   references:
