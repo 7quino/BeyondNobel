@@ -106,14 +106,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5897221749572020791}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39d6ff8b6f4dedf4884121f28c5d8d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 0}
-  Environment: {fileID: 7042546169016861754}
-  Materials: []
+  Renderers: []
 --- !u!1 &7042546168234517367
 GameObject:
   m_ObjectHideFlags: 0
