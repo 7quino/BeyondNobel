@@ -31,6 +31,7 @@ public class ScreenSettingsManager : MonoBehaviour
     {
         Rect safeArea = Screen.safeArea;
 
+        
         // Check for invalid screen startup state on some Samsung devices (see below)
         if (Screen.width > 0 && Screen.height > 0)
         {
@@ -54,5 +55,6 @@ public class ScreenSettingsManager : MonoBehaviour
         {
             onDebugMessage.Invoke("SafeScreenArea: Failure");
         }
+        
     }
 }

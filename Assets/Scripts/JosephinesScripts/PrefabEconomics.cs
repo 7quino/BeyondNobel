@@ -8,89 +8,24 @@ using UnityEngine.XR.ARSubsystems;
 
 public class PrefabEconomics : MonoBehaviour
 {
-    [Header("AR anchor")]
-    [SerializeField] AREarthManager earthManager;
-    [SerializeField] ARAnchorManager anchorManager;
-    [SerializeField] double latitude;
-    [SerializeField] double longitude;
-    //[SerializeField] double altitude = 38;
-    [SerializeField] Quaternion quaternion;
-    [SerializeField] GameObject anchorPrefab;
-    bool coinHolderAnchored = false;
-
-
     [Header("Prefab behaviour")]
     [SerializeField] GameObject coinPrefab;
     [SerializeField] int numberCoins;
     [SerializeField] float timeBetweenSpawn;
     [SerializeField] float xzForce;
     [SerializeField] float yForce;
+    [SerializeField] Transform coinHolder;
 
-    [SerializeField] Transform debugCoinHolder;
-    [SerializeField] bool debugMode;
-
-    Transform coinHolder;
     List<GameObject> coins = new List<GameObject>();
     IEnumerator spawnCoinsRoutine;
 
-    public void PlaceAnchor()
+
+    private void Start()
     {
-        if (coinHolderAnchored) return;
-
-        var earthTrackingState = earthManager.EarthTrackingState;
-        if (earthTrackingState == TrackingState.Tracking)
-        {
-            var cameraGeospatialPose = earthManager.CameraGeospatialPose;
-            //debugtext.text = "\n" + cameraGeospatialPose.Altitude;
-
-            var anchorGeo = ARAnchorManagerExtensions.AddAnchor(
-                    anchorManager,
-                    latitude,
-                    longitude,
-                    cameraGeospatialPose.Altitude,
-                    quaternion);
-
-            var anchoredAsset = Instantiate(anchorPrefab, anchorGeo.transform);
-            anchoredAsset.transform.position = anchorGeo.transform.position;
-            coinHolder = GameObject.Find("CoinHolder").GetComponent<Transform>();
-
-            coinHolderAnchored = true;
-        }
-    }
-
-
-
-    public void OnButtonClickActivate()
-    {
-        if (!coinHolderAnchored && !debugMode)
-        { 
-            return;
-        }
-        else if (debugMode)
-        {
-            coinHolder = debugCoinHolder;
-        }
-
         spawnCoinsRoutine = SpawnCoins();
         StartCoroutine(spawnCoinsRoutine);
     }
 
-    public void OnButtonClickDeactivate()
-    {
-        if (spawnCoinsRoutine != null) StopCoroutine(spawnCoinsRoutine);
-
-        if (coins.Count > 0)
-        {
-            foreach (var coin in coins)
-            {
-                Destroy(coin);
-            }
-
-            coins.Clear();
-        }
-    }
-
-    
     IEnumerator SpawnCoins()
     {
         for (int i = 0; i < numberCoins; i++)

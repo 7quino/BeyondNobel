@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7646127925973935630}
-  - component: {fileID: 7646127925973935631}
+  - component: {fileID: 2064758108}
   m_Layer: 0
   m_Name: PrefabEconomics
   m_TagString: Untagged
@@ -163,7 +163,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7646127925973935631
+--- !u!114 &2064758108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,25 +172,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7646127925973935629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b112458d1f181f4d9b90e9a00f6303b, type: 3}
+  m_Script: {fileID: 11500000, guid: 22d2c8eea13f81541ab938fe502eb61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earthManager: {fileID: 0}
-  anchorManager: {fileID: 0}
-  latitude: 59.3249892827042
-  longitude: 18.0708926439414
-  altitude: 70
+  latitude: 45.4375844066486
+  longitude: 12.3364856598398
+  altitude: 60
   quaternion: {x: 0, y: 0, z: 0, w: 0}
-  anchorPrefab: {fileID: 8878177165268432627, guid: b60d2f6dfc823554f87eb704f97ccbe4,
+  anchorPrefab: {fileID: 5963750690507144001, guid: e7c49700744a8df49a2ccefe6a0953b9,
     type: 3}
-  coinPrefab: {fileID: 6150332785300090085, guid: 9697b3e0ff212af4e8c3d0fe3a2ef40f,
-    type: 3}
-  numberCoins: 200
-  timeBetweenSpawn: 0.05
-  xzForce: 5
-  yForce: 20
-  debugCoinHolder: {fileID: 0}
-  debugMode: 1
+  tagAssets: Coin
+  saveCount: 10
 --- !u!1 &7745294669078482194
 GameObject:
   m_ObjectHideFlags: 0

@@ -237,8 +237,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2d231948ab66b6c40b019cdfe601f873, type: 3}
   coinTop: {fileID: 9191827883987418103}
   coinBottom: {fileID: 4357229499622947030}
-  coinTopGrowth: {fileID: 9191827883987418103}
-  coinBottomGrowth: {fileID: 4357229499622947030}
+  topPivot: {fileID: 6150332786981037936}
+  bottomPivot: {fileID: 5706230639903178224}
 --- !u!82 &984421181
 AudioSource:
   m_ObjectHideFlags: 0

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class LanguageButton : MonoBehaviour
 {
-    [SerializeField] GameObject svText;
-    [SerializeField] GameObject enText;
+    [HideInInspector] public GameObject svText;
+    [HideInInspector] public GameObject enText;
     [HideInInspector] public Button languageButton;
 
     public UnityEvent onEnglish = new UnityEvent();
@@ -17,8 +17,8 @@ public class LanguageButton : MonoBehaviour
     {
         languageButton = GetComponent<Button>();
         languageButton.onClick.AddListener(OnLanguageButtonClicked);
-        svText.SetActive(false);
-        enText.SetActive(true);
+        // svText.SetActive(false);
+        // enText.SetActive(true);
     }
 
     void OnLanguageButtonClicked()

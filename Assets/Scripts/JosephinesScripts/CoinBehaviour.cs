@@ -6,35 +6,35 @@ using UnityEngine;
 public class CoinBehaviour : MonoBehaviour
 {
     [SerializeField] List<AudioClip> coinClips;
-
-
     [SerializeField] Transform coinTop;
     [SerializeField] Transform coinBottom;
-    [SerializeField] Transform coinTopGrowth;
-    [SerializeField] Transform coinBottomGrowth;
+    [SerializeField] Transform topPivot;
+    [SerializeField] Transform bottomPivot;
 
     AudioSource audioSource;
     AudioClip coinClip;
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        audioSource.PlayOneShot(coinClip);
-
-        if (collision.gameObject.tag == "Square")
-        {
-            
-            this.GetComponent<Rigidbody>().isKinematic = true;
-
-            _ = coinTop.position.y > coinBottom.position.y ? StartCoroutine(GrowCoin(coinBottomGrowth)) : StartCoroutine(GrowCoin(coinTopGrowth));
-        }
-    }
-
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         coinClip = coinClips[Random.Range(0, coinClips.Count - 1)];
         audioSource.clip = coinClip;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Square" || collision.gameObject.tag == "Coin")
+        {
+            audioSource.PlayOneShot(coinClip);
+        }
+
+        if (collision.gameObject.tag == "Square")
+        {
+            
+            this.GetComponent<Rigidbody>().isKinematic = true;
+
+            _ = topPivot.position.y < bottomPivot.position.y ? StartCoroutine(GrowCoin(coinBottom)) : StartCoroutine(GrowCoin(coinTop));
+        }
     }
 
     IEnumerator GrowCoin(Transform coinTransform)
