@@ -10,12 +10,19 @@ using UnityEngine.Localization.Settings;
 public enum Language {English, Swedish} 
 public class LanguageManager : MonoBehaviour {
     
-
+    public static LanguageManager instance;
     public Language selectedLanguage;
     private bool active = false;
     private int _localeID;
     private int oldSelectedLanguageState;
     [SerializeField] private LanguageButton _button;
+
+    
+    private void Awake()
+    {
+        instance = this;
+    }
+    
 
     IEnumerator Start() {
         oldSelectedLanguageState = (int)selectedLanguage;
