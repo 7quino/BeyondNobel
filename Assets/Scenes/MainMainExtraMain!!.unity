@@ -1087,10 +1087,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2144810311, guid: 5a4e80460aa2e2f498cfde010c7b7b85, type: 3}
+      propertyPath: latitude
+      value: 59.32501740131381
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144810311, guid: 5a4e80460aa2e2f498cfde010c7b7b85, type: 3}
+      propertyPath: longitude
+      value: 18.0708101246784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2144810311, guid: 5a4e80460aa2e2f498cfde010c7b7b85, type: 3}
+      propertyPath: anchorPrefab
+      value: 
+      objectReference: {fileID: 4104617643675790383, guid: 875b4ab31c71b904e83d197db6d15f62,
+        type: 3}
     - target: {fileID: 4912232191178496692, guid: 5a4e80460aa2e2f498cfde010c7b7b85,
         type: 3}
       propertyPath: m_Name
       value: Chemistry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912232191178496692, guid: 5a4e80460aa2e2f498cfde010c7b7b85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6398913810067809612, guid: 5a4e80460aa2e2f498cfde010c7b7b85,
         type: 3}
@@ -1192,7 +1210,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8140946335091653309}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a91013980ef27e64da63fe99def4519b, type: 3}
   m_Name: 
@@ -1747,6 +1765,56 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &560355829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 560355831}
+  - component: {fileID: 560355830}
+  m_Layer: 0
+  m_Name: EconomicsTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &560355830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560355829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91013980ef27e64da63fe99def4519b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  latitude: 59.32498606785817
+  longitude: 18.07089594519886
+  altitude: 38
+  quaternion: {x: 0, y: 0, z: 0, w: 0}
+  anchorPrefab: {fileID: 8878177165268432627, guid: b60d2f6dfc823554f87eb704f97ccbe4,
+    type: 3}
+--- !u!4 &560355831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560355829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &569233390
 GameObject:
   m_ObjectHideFlags: 0
@@ -4463,7 +4531,7 @@ PrefabInstance:
     - target: {fileID: 7646127925973935629, guid: 883e429d963b9be4d93d6024b1e1a98f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7646127925973935630, guid: 883e429d963b9be4d93d6024b1e1a98f,
         type: 3}
@@ -7122,7 +7190,7 @@ PrefabInstance:
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: altitude
-      value: 380
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
@@ -7137,7 +7205,7 @@ PrefabInstance:
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
