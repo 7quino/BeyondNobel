@@ -64,7 +64,7 @@ public class AnchorPlacePrefab : MonoBehaviour
     {
 
 #if UNITY_EDITOR
-        anchoredAsset = Instantiate(anchorPrefab, new Vector3(0,0,4), Quaternion.identity);
+        //anchoredAsset = Instantiate(anchorPrefab, new Vector3(0,0,4), Quaternion.identity);
 #endif
 
 
