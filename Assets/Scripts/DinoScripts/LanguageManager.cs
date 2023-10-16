@@ -13,7 +13,7 @@ public class LanguageManager : MonoBehaviour {
     public static LanguageManager instance;
     public Language selectedLanguage;
     private bool active = false;
-    private int _localeID;
+    public int _localeID;
     private int oldSelectedLanguageState;
     [SerializeField] private LanguageButton _button;
 
@@ -77,7 +77,7 @@ public class LanguageManager : MonoBehaviour {
 
     public void ChangeLocale(int localeID) {
         if (active) return;
-        
+        _localeID = localeID;
         StartCoroutine(SetLocale(localeID));
     }
     
