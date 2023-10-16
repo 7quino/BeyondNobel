@@ -107,7 +107,7 @@ public class AudioButton
     {
         if (audioClipCurrentLanguage != null) return;
 
-        audioClipCurrentLanguage = LanguageManager.instance.selectedLanguage == Language.English ? audioClipEn : audioClipSv;
+        audioClipCurrentLanguage = LanguageManager.instance._localeID == 0 ? audioClipEn : audioClipSv;
     }
 
     public void ActivateButton(AudioSource audioSource)
