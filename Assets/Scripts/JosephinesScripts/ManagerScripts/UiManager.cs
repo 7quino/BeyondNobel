@@ -147,7 +147,7 @@ public class UiManager : MonoBehaviour
 
         if (_imageSaved)
         {
-            StartCoroutine(PopUpMessage("Image already saved"));
+            StartCoroutine(PopUpMessage("Image already saved!"));
             return;
         }
 
@@ -156,25 +156,15 @@ public class UiManager : MonoBehaviour
 #if UNITY_EDITOR
         System.IO.File.WriteAllBytes(Application.dataPath + "/screenshot.png", mediaBytes);
 #endif
-
-        StartCoroutine(PopUpMessage("1"));
-
-        
-        NativeGallery.Permission permission = SaveImageToGallery(mediaBytes, "NobelAR", Time.time.ToString());
-
-        StartCoroutine(PopUpMessage("2"));
-
-        NativeGallery.Permission permission2 = SaveImageToGallery(_lastScreenShotTexture, "NobelAR", Time.time.ToString());
-
-        StartCoroutine(PopUpMessage("3"));
-
+        NativeGallery.Permission permission = SaveImageToGallery(_lastScreenShotTexture, "NobelAR", Time.time.ToString());
         onDebugMessage.Invoke("Save screenshot: " + permission.ToString());
 
-        string message = permission == Permission.Granted ? "Image saved to camera roll" : "Image save failed";
+        string message = permission == Permission.Granted ? "Image saved to camera roll!" : "Image save failed!";
         StartCoroutine(PopUpMessage(message));
         if (permission == Permission.Granted) _imageSaved = true;
-        
-        
+        _imageSaved = true;
+
+
     }
 
     public void OnShareClicked()
@@ -276,16 +266,16 @@ public class UiManager : MonoBehaviour
         Texture2D ss = _lastScreenShotTexture;
         string filePath = Path.Combine(Application.temporaryCachePath, "shared img.png");
         File.WriteAllBytes(filePath, ss.EncodeToPNG());
-        Destroy(ss);
 
         new NativeShare().AddFile(filePath)
             .SetSubject("Subject goes here").SetText("Hello world!").SetUrl("https://github.com/yasirkula/UnityNativeShare")
             .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
             .Share();
 
-        /*
         if (NativeShare.TargetExists("com.whatsapp"))
             new NativeShare().AddFile(filePath).AddTarget("com.whatsapp").Share();
+
+        /*
         if (NativeShare.TargetExists("com.facebook"))
             new NativeShare().AddFile(filePath).AddTarget("com.facebook").Share();
         if (NativeShare.TargetExists("com.facebook"))
@@ -311,8 +301,9 @@ public class UiManager : MonoBehaviour
 
     IEnumerator PopUpMessage(string message, float time = pupUpTime)
     {
-        messageText.text = message;
         popUpMessage.SetActive(true);
+        messageText.text = message;
+        
 
         yield return new WaitForSeconds(time);
 
