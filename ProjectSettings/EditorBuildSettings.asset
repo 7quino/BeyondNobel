@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/RileyExtraRiley.unity
     guid: d0b3953c4052d3242890d4de5e5ac51b
+  - enabled: 0
+    path: Assets/Scenes/DuaneDuaneExtraDuane.unity
+    guid: 2b050002b6b66184699548d63ad5f169
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 49d0a678eff2ba8458022636c4b50608,
       type: 2}
