@@ -24,7 +24,7 @@ public class PeaceController : MonoBehaviour {
     }
     
     IEnumerator Tick() {
-        if (!shouldRun) return;
+        if (!shouldRun) yield return null;
 
         while (true) {
             yield return new WaitForSeconds(Random.Range(1, 5));
@@ -38,6 +38,5 @@ public class PeaceController : MonoBehaviour {
                 _nukeSpawnPoints[randomSpawnNumber].rotation
                 );
         }
-        yield return null;
     }
 }
