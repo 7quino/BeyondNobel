@@ -57,12 +57,12 @@ Shader "Custom/Vid360"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                float2 uv = float2(1. -i.uv.x,i.uv.y);
+                
     
-                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 texCol = tex2D(_MainTex, i.uv);
                 // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                
+                return texCol;
             }
             ENDCG
         }
