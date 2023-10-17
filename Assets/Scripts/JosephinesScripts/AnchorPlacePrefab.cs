@@ -63,6 +63,11 @@ public class AnchorPlacePrefab : MonoBehaviour
     public virtual void ShowButton()
     {
 
+#if UNITY_EDITOR
+        //anchoredAsset = Instantiate(anchorPrefab, new Vector3(0,0,4), Quaternion.identity);
+#endif
+
+
         buttonIsActive = true;
 
         if (anchorGeo && anchoredAsset == null)

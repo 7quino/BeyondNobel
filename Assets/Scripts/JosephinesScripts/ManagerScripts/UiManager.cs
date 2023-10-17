@@ -183,8 +183,8 @@ public class UiManager : MonoBehaviour
     {
         introCanvas.SetActive(true);
 
-        popUpMessage.SetActive(false);
         privacyPromptCanvas.SetActive(false);
+        popUpMessage.SetActive(false);
         arViewCanvas.SetActive(false);
         vpsCheckCanvas.SetActive(false);
         infoBubble1.SetActive(false);
