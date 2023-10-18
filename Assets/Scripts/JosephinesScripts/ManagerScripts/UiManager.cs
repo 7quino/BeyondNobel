@@ -34,7 +34,7 @@ public class UiManager : MonoBehaviour
     //LocationServiceMessage
     [SerializeField] GameObject locationServiceMessageCanvas;
     public TextMeshProUGUI locationServiceMessage;
-    bool locationServiceIsFinnished = false;
+    bool _locationServiceIsFinnished = false;
 
     //Info button
     [SerializeField] GameObject infoCanvas;
@@ -92,7 +92,10 @@ public class UiManager : MonoBehaviour
 
     public void OnLocationServiceFinniched(string message)
     {
+        if (_locationServiceIsFinnished) return;
+
         locationServiceMessageCanvas.SetActive(false);
+        _locationServiceIsFinnished = true;
         StartCoroutine(PopUpMessage(message, 2.0f));
     }
 
@@ -183,8 +186,8 @@ public class UiManager : MonoBehaviour
     {
         introCanvas.SetActive(true);
 
-        privacyPromptCanvas.SetActive(false);
         popUpMessage.SetActive(false);
+        privacyPromptCanvas.SetActive(false);
         arViewCanvas.SetActive(false);
         vpsCheckCanvas.SetActive(false);
         infoBubble1.SetActive(false);
@@ -240,7 +243,7 @@ public class UiManager : MonoBehaviour
     {
         _imageSaved = false;
         UICanvas.SetActive(false);
-        if (!locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(false);
+        if (!_locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(false);
 
         yield return new WaitForEndOfFrame();
 
@@ -274,19 +277,20 @@ public class UiManager : MonoBehaviour
 
         if (NativeShare.TargetExists("com.whatsapp"))
             new NativeShare().AddFile(filePath).AddTarget("com.whatsapp").Share();
-
-        /*
         if (NativeShare.TargetExists("com.facebook"))
             new NativeShare().AddFile(filePath).AddTarget("com.facebook").Share();
-        if (NativeShare.TargetExists("com.facebook"))
+        if (NativeShare.TargetExists("com.snapshat"))
             new NativeShare().AddFile(filePath).AddTarget("com.facebook").Share();
-        */
+        if (NativeShare.TargetExists("com.snapshat"))
+            new NativeShare().AddFile(filePath).AddTarget("com.instagram").Share();
+        if (NativeShare.TargetExists("com.snapshat"))
+            new NativeShare().AddFile(filePath).AddTarget("com.tiktok").Share();
     }
 
     void QuitScreenShotMode()
     {
         arViewCanvas.SetActive(true);
-        if (!locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(true);
+        if (!_locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(true);
         if (popUpMessage.activeInHierarchy) popUpMessage.SetActive(false);
         ScreenShotCanvas.SetActive(false);
         _lastScreenShotTexture = null;
@@ -294,11 +298,13 @@ public class UiManager : MonoBehaviour
     }
 
 
+    
     public void ShowMessage(string message)
     {
         StartCoroutine(PopUpMessage(message));
     }
-
+    
+    
     IEnumerator PopUpMessage(string message, float time = pupUpTime)
     {
         popUpMessage.SetActive(true);
@@ -311,3 +317,4 @@ public class UiManager : MonoBehaviour
         popUpMessage.SetActive(false);
     }
 }
+    

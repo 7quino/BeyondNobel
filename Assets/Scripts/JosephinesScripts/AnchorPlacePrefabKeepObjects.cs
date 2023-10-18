@@ -12,7 +12,7 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
     public override void ShowButton()
     {
 #if UNITY_EDITOR
-        //anchoredAsset = Instantiate(anchorPrefab, new Vector3(0, 0, 4), Quaternion.identity);
+        anchoredAsset = Instantiate(anchorPrefab, new Vector3(0, 0, 4), Quaternion.identity);
 #endif
 
         buttonIsActive = true;
@@ -28,8 +28,7 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
             }
             objectsToKeep.Clear();
 
-            anchoredAsset = Instantiate(anchorPrefab, anchorGeo.transform);
-            anchoredAsset.transform.position = anchorGeo.transform.position;
+            anchoredAsset = Instantiate(anchorPrefab, anchorPoint.transform);
         }
 
         if (anchorGeo == null && anchoredAsset == null)
@@ -40,9 +39,6 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
         if (locationServiceFailure && anchoredAsset == null)
         {
             UiManager.instance.ShowMessage("tap to place experience!");
-
-            //Exchange update function to coroutine
-            StartCoroutine(PlaceWithPlaneTracking());
         }
         else if(locationServiceFailure)
         {
