@@ -9,6 +9,7 @@ Shader "Unlit/PortalPlane"
 		LOD 100
 		Zwrite Off
 		ColorMask 0
+		Cull off
 
 		Pass
 		{

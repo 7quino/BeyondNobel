@@ -35,7 +35,15 @@ public class PortalManager : MonoBehaviour
     {
         Vector3 camPositionInPortalSpace = transform.InverseTransformPoint(MainCamera.transform.position);
 
-        if(camPositionInPortalSpace.y < 0.5f)
+        if(camPositionInPortalSpace.y <= 0.0f)
+        {
+            for (int i = 0; i < Materials.Count; ++i)
+            {
+                Materials[i].SetInt("_StencilComp", (int)CompareFunction.NotEqual);
+            }
+        }
+
+        else if(camPositionInPortalSpace.y < 0.5f)
         {
             //disable stencil test
             for(int i = 0; i < Materials.Count; ++i)
