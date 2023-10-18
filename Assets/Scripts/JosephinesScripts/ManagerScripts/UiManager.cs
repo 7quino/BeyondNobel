@@ -90,12 +90,14 @@ public class UiManager : MonoBehaviour
         onGameStart.Invoke();
     }
 
-    public void OnLocationServiceFinniched(string message)
+    public void OnLocationServiceFinniched(string messageEn, string messageSv)
     {
         if (_locationServiceIsFinnished) return;
 
         locationServiceMessageCanvas.SetActive(false);
         _locationServiceIsFinnished = true;
+
+        string message = LanguageManager.instance._localeID == 0 ? messageEn : messageSv;
         StartCoroutine(PopUpMessage(message, 2.0f));
     }
 
@@ -150,7 +152,8 @@ public class UiManager : MonoBehaviour
 
         if (_imageSaved)
         {
-            StartCoroutine(PopUpMessage("Image already saved!"));
+           
+            StartCoroutine(PopUpMessage(LanguageManager.instance._localeID == 0 ? "Image already saved!" : "Bilden är redan sparad!"));
             return;
         }
 
@@ -162,7 +165,9 @@ public class UiManager : MonoBehaviour
         NativeGallery.Permission permission = SaveImageToGallery(_lastScreenShotTexture, "NobelAR", Time.time.ToString());
         onDebugMessage.Invoke("Save screenshot: " + permission.ToString());
 
-        string message = permission == Permission.Granted ? "Image saved to camera roll!" : "Image save failed!";
+        string success = LanguageManager.instance._localeID == 0 ? "Image saved to camera roll!" : "Bilden sparad i galleriet!";
+        string failure = LanguageManager.instance._localeID == 0 ? "Image save failed!" : "Kunde inte spara bild!";
+        string message = permission == Permission.Granted ? success : failure;
         StartCoroutine(PopUpMessage(message));
         if (permission == Permission.Granted) _imageSaved = true;
         _imageSaved = true;
@@ -206,8 +211,8 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
-        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => OnLocationServiceFinniched("Location found!"));
-        CheckLocationService.Instance.onLocationServiceError.AddListener(() => OnLocationServiceFinniched("No location service,\nusing plan B"));
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => OnLocationServiceFinniched("Location found!", "Plats hittad!"));
+        CheckLocationService.Instance.onLocationServiceError.AddListener(() => OnLocationServiceFinniched("No location service,\nusing plan B", "Hittar inte plats,\nanvänder plan B"));
         
         StartCoroutine(IntroSequence());
     }
@@ -271,10 +276,11 @@ public class UiManager : MonoBehaviour
         File.WriteAllBytes(filePath, ss.EncodeToPNG());
 
         new NativeShare().AddFile(filePath)
-            .SetSubject("Subject goes here").SetText("Hello world!").SetUrl("https://github.com/yasirkula/UnityNativeShare")
+            .SetSubject("Subject goes here").SetText(LanguageManager.instance._localeID == 0 ? "Greetings from Beyond Nobel!" : "Hälsningar från Beyond Nobel!").SetUrl("https://github.com/yasirkula/UnityNativeShare")
             .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
             .Share();
 
+        /*
         if (NativeShare.TargetExists("com.whatsapp"))
             new NativeShare().AddFile(filePath).AddTarget("com.whatsapp").Share();
         if (NativeShare.TargetExists("com.facebook"))
@@ -285,6 +291,7 @@ public class UiManager : MonoBehaviour
             new NativeShare().AddFile(filePath).AddTarget("com.instagram").Share();
         if (NativeShare.TargetExists("com.snapshat"))
             new NativeShare().AddFile(filePath).AddTarget("com.tiktok").Share();
+        */
     }
 
     void QuitScreenShotMode()
