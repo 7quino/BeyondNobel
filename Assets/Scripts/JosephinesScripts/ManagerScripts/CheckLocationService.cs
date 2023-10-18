@@ -1,6 +1,5 @@
 using Google.XR.ARCoreExtensions;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Android;
@@ -36,6 +35,8 @@ public class CheckLocationService : MonoBehaviour
     private const double _horizontalAccuracyThreshold = 20;
     private const float _timeoutSeconds = 180;
 
+    int stepOverFrame = 0;
+
     private void Awake()
     {
         Instance = this;
@@ -60,6 +61,10 @@ public class CheckLocationService : MonoBehaviour
 
     public void Update()
     {
+        stepOverFrame++;
+        if (stepOverFrame != 10) return;
+        stepOverFrame = 0;
+
         if (!_privancyPromptOk) return;
         if (CheckARSession.Instance.isReturning) return;
         if (ARSession.state != ARSessionState.SessionInitializing && ARSession.state != ARSessionState.SessionTracking) return;
@@ -144,6 +149,7 @@ public class CheckLocationService : MonoBehaviour
             {
                 onDebugMessage.Invoke("Geospatial sample localization timed out.");
                 CheckARSession.Instance.ReturnWithReason(_localizationFailureMessage);
+                onLocationServiceError?.Invoke();
             }
             else
             {
@@ -156,6 +162,7 @@ public class CheckLocationService : MonoBehaviour
             // Finished localization.
             isLocalizing = false;
             _localizationPassedTime = 0f;
+            onLocationServiceSuccess.Invoke();
             onDebugMessage.Invoke(_localizationSuccessMessage);
         }
         else

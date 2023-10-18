@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Google.XR.ARCoreExtensions;
-using TMPro;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -15,13 +14,14 @@ public class AnchorPlacePrefab : MonoBehaviour
     [SerializeField] double altitude = 38;
     [SerializeField] Quaternion quaternion;
     [SerializeField] protected GameObject anchorPrefab;
-    //[SerializeField] TextMeshProUGUI debugtext;
 
     protected ARRaycastManager arRaycastManager;
     protected AREarthManager earthManager;
     protected ARAnchorManager anchorManager;
     protected ARGeospatialAnchor anchorGeo = null;
+    protected GameObject anchorPoint = null;
     protected GameObject anchoredAsset = null;
+    protected bool locationServiceSuccess = false;
     protected bool locationServiceFailure = false;
     protected bool buttonIsActive = false;
 
@@ -31,21 +31,41 @@ public class AnchorPlacePrefab : MonoBehaviour
         earthManager = FindObjectOfType<AREarthManager>();
         anchorManager = FindObjectOfType<ARAnchorManager>();
 
-        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(PlaceAnchor);
+        //CheckLocationService.Instance.onLocationServiceSuccess.AddListener(PlaceAnchor);
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
         CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
     }
 
+    void Update()
+    {
+        PlaceAnchor();
+
+        if (!locationServiceFailure) return;
+        if (anchoredAsset != null) return;
+        if (!buttonIsActive) return;
+
+        Touch touch = Input.GetTouch(0);
+        Vector2 touchPos = touch.position;
+        List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
+        if (arRaycastManager.Raycast(touchPos, hits, TrackableType.PlaneWithinPolygon))
+        {
+            Pose hitPose = hits[0].pose;
+            anchoredAsset = Instantiate(anchorPrefab, hitPose.position, Quaternion.identity);
+        }
+    }
 
     public void PlaceAnchor()
     {
+        if (!locationServiceSuccess) return;
         if (anchorGeo != null) return;
+
 
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
         {
-            //For getting altitude camera
+            //For testing at camera altitude
             var cameraGeospatialPose = earthManager.CameraGeospatialPose;
-            //debugtext.text = "\n" + cameraGeospatialPose.Altitude;
 
             anchorGeo = ARAnchorManagerExtensions.AddAnchor(
                     anchorManager,
@@ -54,6 +74,9 @@ public class AnchorPlacePrefab : MonoBehaviour
                     altitude,
                     //cameraGeospatialPose.Altitude,
                     quaternion);
+
+            anchorPoint = Instantiate(new GameObject(), anchorGeo.transform);
+            //anchorPoint.transform.position = anchorGeo.transform.position;
 
             //For testing
             //ShowButton();
@@ -64,16 +87,14 @@ public class AnchorPlacePrefab : MonoBehaviour
     {
 
 #if UNITY_EDITOR
-        //anchoredAsset = Instantiate(anchorPrefab, new Vector3(0,0,4), Quaternion.identity);
+        anchoredAsset = Instantiate(anchorPrefab, new Vector3(0,0,4), Quaternion.identity);
 #endif
-
 
         buttonIsActive = true;
 
         if (anchorGeo && anchoredAsset == null)
         {
-            anchoredAsset = Instantiate(anchorPrefab, anchorGeo.transform);
-            anchoredAsset.transform.position = anchorGeo.transform.position;
+            anchoredAsset = Instantiate(anchorPrefab, anchorPoint.transform);
         }
 
 
@@ -85,9 +106,6 @@ public class AnchorPlacePrefab : MonoBehaviour
         if (locationServiceFailure && anchoredAsset == null)
         {
             UiManager.instance.ShowMessage("Tap to place experience!");
-
-            //Exchange update function to coroutine
-            //StartCoroutine(PlaceWithPlaneTracking());
         }
         else if (locationServiceFailure)
         {
@@ -118,23 +136,5 @@ public class AnchorPlacePrefab : MonoBehaviour
     protected IEnumerator PlaceWithPlaneTracking()
     {
         yield return null;
-    }
-
-
-    void Update()
-    {
-        if (!locationServiceFailure) return;
-        if (anchoredAsset != null) return;
-        if (!buttonIsActive) return;
-
-        Touch touch = Input.GetTouch(0);
-        Vector2 touchPos = touch.position;
-        List<ARRaycastHit> hits = new List<ARRaycastHit>();
-
-        if (arRaycastManager.Raycast(touchPos, hits, TrackableType.PlaneWithinPolygon))
-        {
-            Pose hitPose = hits[0].pose;
-            anchoredAsset = Instantiate(anchorPrefab, hitPose.position, Quaternion.identity);
-        }
     }
 }
