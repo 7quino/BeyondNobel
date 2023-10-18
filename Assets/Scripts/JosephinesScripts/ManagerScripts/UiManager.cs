@@ -38,8 +38,6 @@ public class UiManager : MonoBehaviour
 
     //Info button
     [SerializeField] GameObject infoCanvas;
-    [SerializeField] GameObject infoBubble1;
-    [SerializeField] GameObject infoBubble2;
 
     //Visibility button
     [SerializeField] GameObject bottomButtons;
@@ -55,7 +53,7 @@ public class UiManager : MonoBehaviour
 
     //PopUp Message
     [SerializeField] GameObject popUpMessage;
-    [SerializeField] TextMeshProUGUI messageText;
+    [SerializeField] TextMeshProUGUI stringMessageTmpro;
     [SerializeField] const float pupUpTime = 2f;
 
     //Share button
@@ -106,23 +104,17 @@ public class UiManager : MonoBehaviour
         vpsCheckCanvas.SetActive(false);
     }
 
-    public void OnInfoButtonClicked()
+    public void OnInfoButtonShowClicked()
     {
         infoCanvas.SetActive(true);
         ScreenSettingsManager.Instance.PanelSafeArea(infoCanvas.GetComponent<RectTransform>());
-        infoBubble1.SetActive(true);
+        if (!_locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(false);
     }
 
-    public void OnInfoBubble1Clicked()
+    public void OnInfoBubbleHideClicked()
     {
-        infoBubble1.SetActive(false);
-        infoBubble2.SetActive(true);
-    }
-
-    public void OnInfoBubble2Clicked()
-    {
-        infoBubble2.SetActive(false);
         infoCanvas.SetActive(false);
+        if (!_locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(true);
     }
 
     public void OnVisibilityButtonClicked()
@@ -190,13 +182,10 @@ public class UiManager : MonoBehaviour
     void OnEnable()
     {
         introCanvas.SetActive(true);
-
         popUpMessage.SetActive(false);
         privacyPromptCanvas.SetActive(false);
         arViewCanvas.SetActive(false);
         vpsCheckCanvas.SetActive(false);
-        infoBubble1.SetActive(false);
-        infoBubble2.SetActive(false);
         infoCanvas.SetActive(false);
         ScreenShotCanvas.SetActive(false);
 
@@ -315,12 +304,11 @@ public class UiManager : MonoBehaviour
     IEnumerator PopUpMessage(string message, float time = pupUpTime)
     {
         popUpMessage.SetActive(true);
-        messageText.text = message;
-        
+        stringMessageTmpro.text = message;
 
         yield return new WaitForSeconds(time);
 
-        messageText.text = string.Empty;
+        stringMessageTmpro.text = string.Empty;
         popUpMessage.SetActive(false);
     }
 }

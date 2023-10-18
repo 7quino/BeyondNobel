@@ -22,9 +22,6 @@ public class SimpleAnchor : MonoBehaviour
     protected bool locationServiceFailure = false;
     protected bool buttonIsActive = false;
 
-    bool prefabIsAnchored = false;
-
-
     public static SimpleAnchor instance;
     public UnityEvent<string> OnSendMessage = new UnityEvent<string>();
 

@@ -39,7 +39,6 @@ public class IntroUiDebugMessages : MonoBehaviour
         CheckLocationService.Instance.onDebugMessage.AddListener((message) => { SnackBarText.text = message; });
         ScreenSettingsManager.Instance.onDebugMessage.AddListener((message) => { DebugText.text = message; });
         UiManager.instance.onDebugMessage.AddListener((message) => { DebugText.text += "\n" + message; });
-        SimpleAnchor.instance.OnSendMessage.AddListener((message) => { SnackBarText.text = message; });
 
     }
     

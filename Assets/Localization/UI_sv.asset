@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: sv
   m_SharedData: {fileID: 11400000, guid: 42da0af3a94349c43a3d00bf3df32097, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 1803903180636684289
   m_TableData:
   - m_Id: 86020382720
     m_Localized: Debug Info.
@@ -43,12 +44,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 960981557248
-    m_Localized: "Tryck p\xE5 pris-\nkategoriknapparna f\xF6r att\nv\xE4xla AR-lager
-      p\xE5/av"
+    m_Localized: "2. Tryck p\xE5 pris-kategori\nknapparna f\xF6r att sl\xE5 p\xE5/av\npris
+      filter och ljudknapparna \nf\xF6r att h\xF6ra mer!"
     m_Metadata:
       m_Items: []
   - m_Id: 1006846271488
-    m_Localized: "Tryck p\xE5 pris-kategoriknapparna f\xF6r att v\xE4xla filter p\xE5/av"
+    m_Localized: "Beyond Nobel \xE4r en augmented reality app som anv\xE4nder din
+      kamera f\xF6r att visa 3D-inneh\xE5ll  i den verkliga v\xE4rlden.\n\nTryck
+      p\xE5 pris-kategoriknapparna f\xF6r att v\xE4xla filter p\xE5/av och ljudknapparna
+      f\xF6r att l\xE4ra dig mer!"
     m_Metadata:
       m_Items: []
   - m_Id: 1033777897472
@@ -60,7 +64,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1103835357184
-    m_Localized: "Ta AR-bilder och\ndela p\xE5 sociala medier"
+    m_Localized: "3. Ta bilder och \ndela dom p\xE5 sociala \nmedier. Ha s\xE5 kul!"
     m_Metadata:
       m_Items: []
   - m_Id: 1147594530816
@@ -107,6 +111,28 @@ MonoBehaviour:
     m_Localized: "K\xD6R!"
     m_Metadata:
       m_Items: []
+  - m_Id: 1151186450243584
+    m_Localized: Exempel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1156253307887616
+    m_Localized: '{0}'
+    m_Metadata:
+      m_Items:
+      - rid: 1803903180636684289
+  - m_Id: 1161526491734016
+    m_Localized: Drivs av Nobelmuseet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1168324577714176
+    m_Localized: "1. Beyond Nobel \xE4r en \naugmented reality app som anv\xE4nder
+      \ndin kamera f\xF6r att visa 3D-inneh\xE5ll \ni den verkliga v\xE4rlden."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1803903180636684289
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0af339b1b0400

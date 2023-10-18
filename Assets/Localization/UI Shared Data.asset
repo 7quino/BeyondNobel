@@ -87,6 +87,22 @@ MonoBehaviour:
     m_Key: GET_STARTED
     m_Metadata:
       m_Items: []
+  - m_Id: 1151186450243584
+    m_Key: EXAMPLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1156253307887616
+    m_Key: POP_UP_MESSAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1161526491734016
+    m_Key: POWERED_BY_NOBEL_MUSEUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1168324577714176
+    m_Key: BEYOND_NOBEL_PURPOSE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
