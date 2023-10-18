@@ -100,12 +100,15 @@ public class AnchorPlacePrefab : MonoBehaviour
 
         if (anchorGeo == null && anchoredAsset == null)
         {
-            UiManager.instance.locationServiceMessage.text = "Still searching\nfor location!";
+
+            string message = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vänta på platsen!";
+            UiManager.instance.locationServiceMessage.text = message;
         }
 
         if (locationServiceFailure && anchoredAsset == null)
         {
-            UiManager.instance.ShowMessage("Tap to place experience!");
+            string message = LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck för att placera upplevelsen!";
+            UiManager.instance.ShowMessage(message);
         }
         else if (locationServiceFailure)
         {
