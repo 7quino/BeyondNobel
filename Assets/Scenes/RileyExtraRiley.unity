@@ -507,6 +507,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrefabUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7466108744972307788, guid: 48b22a02f5e71244792b0d0dd111e2c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7466108744972307791, guid: 48b22a02f5e71244792b0d0dd111e2c4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1241,6 +1246,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NobelCoinPRefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3143316562821061888, guid: 0a24cd473cce76846af36daccede1740,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a24cd473cce76846af36daccede1740, type: 3}
 --- !u!1001 &810773610
@@ -1787,17 +1797,17 @@ PrefabInstance:
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: altitude
-      value: 100
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: latitude
-      value: 59.301082
+      value: 59.345564
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
       propertyPath: longitude
-      value: 18.090995
+      value: 18.060949
       objectReference: {fileID: 0}
     - target: {fileID: 8140946335464806325, guid: d9f470e3dee37404d8475323d3cf2185,
         type: 3}
@@ -1819,6 +1829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PrefabPhysicsPlaceAnchor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140946335464806330, guid: d9f470e3dee37404d8475323d3cf2185,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9f470e3dee37404d8475323d3cf2185, type: 3}
@@ -2054,6 +2069,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlacePrefabCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 7408167701440114740, guid: db25d0c57f5b10640b8a527ae222d399,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7408167701440114741, guid: db25d0c57f5b10640b8a527ae222d399,
         type: 3}
