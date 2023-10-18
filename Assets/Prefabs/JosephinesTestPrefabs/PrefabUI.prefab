@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7490196, g: 0.007843138, b: 0.4627451, a: 0.15686275}
+  m_Color: {r: 0.7490196, g: 0.007843138, b: 0.4627451, a: 0.23529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6607,7 +6607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.69803923, b: 0.7921569, a: 1}
+  m_Color: {r: 0, g: 0.69803923, b: 0.7921569, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8443,7 +8443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Take AR photos and share on social media. Have fun (:'
+  m_text: 'Take photos and share on social media. Have fun (:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 404964cadf5f0db468b72d60e3c959a6, type: 2}
   m_sharedMaterial: {fileID: -6887594888358830049, guid: 404964cadf5f0db468b72d60e3c959a6,
@@ -8765,7 +8765,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466108744804149161}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39847a955c8df5b4dbbb56aeb879648b, type: 3}
   m_Name: 
@@ -11098,7 +11098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.84313726, g: 0.80784315, b: 0.49411765, a: 1}
+  m_Color: {r: 0.84313726, g: 0.80784315, b: 0.49411765, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11809,7 +11809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.05882353, g: 0.1764706, b: 0.6509804, a: 1}
+  m_Color: {r: 0.05882353, g: 0.1764706, b: 0.6509804, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12608,7 +12608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press the prize category buttons to toogle AR layers on/off
+  m_text: Press the prize category buttons to toogle filters on/off
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 404964cadf5f0db468b72d60e3c959a6, type: 2}
   m_sharedMaterial: {fileID: -6887594888358830049, guid: 404964cadf5f0db468b72d60e3c959a6,
@@ -13269,7 +13269,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466108745312552880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39847a955c8df5b4dbbb56aeb879648b, type: 3}
   m_Name: 
@@ -15043,7 +15043,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466108745470446068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39847a955c8df5b4dbbb56aeb879648b, type: 3}
   m_Name: 
@@ -15947,7 +15947,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466108745642120919}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39847a955c8df5b4dbbb56aeb879648b, type: 3}
   m_Name: 
@@ -18382,7 +18382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7490196, g: 0.007843138, b: 0.4627451, a: 1}
+  m_Color: {r: 0.7490196, g: 0.007843138, b: 0.4627451, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19121,7 +19121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7466108746051443218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19373,7 +19373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39607844, g: 0.17254902, b: 0.7019608, a: 0.78431374}
+  m_Color: {r: 0.39607844, g: 0.17254902, b: 0.7019608, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19737,7 +19737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7264151, b: 0.5858186, a: 1}
+  m_Color: {r: 0, g: 0.7264151, b: 0.5858186, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20073,7 +20073,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466108746175456927}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39847a955c8df5b4dbbb56aeb879648b, type: 3}
   m_Name: 
@@ -20688,7 +20688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.62691987, b: 0.24905658, a: 1}
+  m_Color: {r: 1, g: 0.62691987, b: 0.24905658, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21632,7 +21632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39607844, g: 0.17254902, b: 0.7019608, a: 0.78431374}
+  m_Color: {r: 0.39607844, g: 0.17254902, b: 0.7019608, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21733,7 +21733,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466108746332295172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39847a955c8df5b4dbbb56aeb879648b, type: 3}
   m_Name: 
@@ -21803,7 +21803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7490196, g: 0.007843138, b: 0.4627451, a: 0.23529412}
+  m_Color: {r: 0.7490196, g: 0.007843138, b: 0.4627451, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

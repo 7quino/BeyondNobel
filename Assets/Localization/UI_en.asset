@@ -65,11 +65,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1006846271488
-    m_Localized: Press the prize category buttons to toogle AR layers on/off
+    m_Localized: Press the prize category buttons to toogle filters on/off
     m_Metadata:
       m_Items: []
   - m_Id: 1033777897472
-    m_Localized: 'Take AR photos and share on social media. Have fun (:'
+    m_Localized: 'Take photos and share on social media. Have fun (:'
     m_Metadata:
       m_Items: []
   - m_Id: 1077218304000

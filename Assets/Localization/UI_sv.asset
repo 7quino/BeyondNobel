@@ -48,12 +48,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1006846271488
-    m_Localized: "Tryck p\xE5 pris-kategoriknapparns f\xF6r att v\xE4xla AR-lager
-      p\xE5/av"
+    m_Localized: "Tryck p\xE5 pris-kategoriknapparna f\xF6r att v\xE4xla filter p\xE5/av"
     m_Metadata:
       m_Items: []
   - m_Id: 1033777897472
-    m_Localized: "Ta AR-bilder och dela dom p\xE5 sociala medier. Ha s\xE5 kul!"
+    m_Localized: "Ta bilder och dela dom p\xE5 sociala medier. Ha s\xE5 kul!"
     m_Metadata:
       m_Items: []
   - m_Id: 1077218304000
