@@ -31,14 +31,19 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
             anchoredAsset = Instantiate(anchorPrefab, anchorPoint.transform);
         }
 
+        if (userDirection != string.Empty)
+        {
+            UiManager.instance.ShowMessage(userDirection);
+        }
+
         if (anchorGeo == null && anchoredAsset == null)
         {
-            UiManager.instance.locationServiceMessage.text = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vänta på platsen!";
+            UiManager.instance.locationServiceMessage.text = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vï¿½nta pï¿½ platsen!";
         }
 
         if (locationServiceFailure && anchoredAsset == null)
         {
-            UiManager.instance.ShowMessage(LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck för att placera upplevelsen!");
+            UiManager.instance.ShowMessage(LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck fï¿½r att placera upplevelsen!");
         }
         else if(locationServiceFailure)
         {
