@@ -27,22 +27,12 @@ public class AnchorPlacePrefab : MonoBehaviour
     protected bool locationServiceFailure = false;
     protected bool buttonIsActive = false;
 
-    protected void OnEnable()
+    protected void Start()
     {
         CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
         CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
-        UiManager.instance.onPrivacyPromptIsOk.AddListener((enable) => privacyPromptOkay = enable);
-    }
+        //UiManager.instance.onPrivacyPromptIsOk.AddListener((enable) => privacyPromptOkay = enable);
 
-    protected void OnDisable()
-    {
-        CheckLocationService.Instance.onLocationServiceSuccess.RemoveListener(() => locationServiceSuccess = true);
-        CheckLocationService.Instance.onLocationServiceError.RemoveListener(() => locationServiceFailure = true);
-        UiManager.instance.onPrivacyPromptIsOk.RemoveListener((enable) => privacyPromptOkay = enable);
-    }
-
-    protected void Start()
-    {
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
         earthManager = FindObjectOfType<AREarthManager>();
         anchorManager = FindObjectOfType<ARAnchorManager>();
@@ -69,7 +59,7 @@ public class AnchorPlacePrefab : MonoBehaviour
 
     public void PlaceAnchor()
     {
-        if (!locationServiceSuccess) return;
+        //if (!locationServiceSuccess) return;
         if (anchorGeo != null) return;
 
 
@@ -83,8 +73,8 @@ public class AnchorPlacePrefab : MonoBehaviour
                     anchorManager,
                     latitude,
                     longitude,
-                    altitude,
-                    //cameraGeospatialPose.Altitude,
+                    //altitude,
+                    cameraGeospatialPose.Altitude,
                     quaternion);
 
             anchorPoint = Instantiate(new GameObject(), anchorGeo.transform);
