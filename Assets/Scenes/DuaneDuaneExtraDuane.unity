@@ -1599,7 +1599,7 @@ PrefabInstance:
     - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
         type: 3}
       propertyPath: latitude
-      value: 59.324513
+      value: 59.3251638875524
       objectReference: {fileID: 0}
     - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
         type: 3}
@@ -1614,7 +1614,7 @@ PrefabInstance:
     - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
         type: 3}
       propertyPath: longitude
-      value: 18.07085
+      value: 18.0708926439414
       objectReference: {fileID: 0}
     - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
         type: 3}
