@@ -19,8 +19,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: -365
     y: -190
-    width: 1731
-    height: 2201
+    width: 1730
+    height: 2163
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -459,7 +459,7 @@ MonoBehaviour:
       slotIndex: 0
   m_OutputFlowSlot:
   - link: []
-  blendMode: 1
+  blendMode: 0
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
