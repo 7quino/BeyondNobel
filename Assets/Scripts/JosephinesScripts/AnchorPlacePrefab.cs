@@ -14,6 +14,7 @@ public class AnchorPlacePrefab : MonoBehaviour
     [SerializeField] double altitude = 38;
     [SerializeField] Quaternion quaternion;
     [SerializeField] protected GameObject anchorPrefab;
+    [SerializeField] protected bool showDirectly = false;
 
     protected ARRaycastManager arRaycastManager;
     protected AREarthManager earthManager;
@@ -21,19 +22,30 @@ public class AnchorPlacePrefab : MonoBehaviour
     protected ARGeospatialAnchor anchorGeo = null;
     protected GameObject anchorPoint = null;
     protected GameObject anchoredAsset = null;
+    protected bool privacyPromptOkay = false;
     protected bool locationServiceSuccess = false;
     protected bool locationServiceFailure = false;
     protected bool buttonIsActive = false;
+
+    protected void OnEnable()
+    {
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
+        CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
+        UiManager.instance.onPrivacyPromptIsOk.AddListener((enable) => privacyPromptOkay = enable);
+    }
+
+    protected void OnDisable()
+    {
+        CheckLocationService.Instance.onLocationServiceSuccess.RemoveListener(() => locationServiceSuccess = true);
+        CheckLocationService.Instance.onLocationServiceError.RemoveListener(() => locationServiceFailure = true);
+        UiManager.instance.onPrivacyPromptIsOk.RemoveListener((enable) => privacyPromptOkay = enable);
+    }
 
     protected void Start()
     {
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
         earthManager = FindObjectOfType<AREarthManager>();
         anchorManager = FindObjectOfType<ARAnchorManager>();
-
-        //CheckLocationService.Instance.onLocationServiceSuccess.AddListener(PlaceAnchor);
-        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
-        CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
     }
 
     void Update()
@@ -76,10 +88,11 @@ public class AnchorPlacePrefab : MonoBehaviour
                     quaternion);
 
             anchorPoint = Instantiate(new GameObject(), anchorGeo.transform);
-            //anchorPoint.transform.position = anchorGeo.transform.position;
 
-            //For testing
-            //ShowButton();
+            if (showDirectly)
+            {
+                ShowButton();
+            }
         }
     }
 
@@ -100,15 +113,12 @@ public class AnchorPlacePrefab : MonoBehaviour
 
         if (anchorGeo == null && anchoredAsset == null)
         {
-
-            string message = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vänta på platsen!";
-            UiManager.instance.locationServiceMessage.text = message;
+            UiManager.instance.locationServiceMessage.text = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vänta på platsen!";
         }
 
         if (locationServiceFailure && anchoredAsset == null)
         {
-            string message = LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck för att placera upplevelsen!";
-            UiManager.instance.ShowMessage(message);
+            UiManager.instance.ShowMessage(LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck för att placera upplevelsen!");
         }
         else if (locationServiceFailure)
         {

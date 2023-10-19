@@ -33,14 +33,12 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
 
         if (anchorGeo == null && anchoredAsset == null)
         {
-            string message = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vänta på platsen!";
-            UiManager.instance.locationServiceMessage.text = message;
+            UiManager.instance.locationServiceMessage.text = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vänta på platsen!";
         }
 
         if (locationServiceFailure && anchoredAsset == null)
         {
-            string message = LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck för att placera upplevelsen!";
-            UiManager.instance.ShowMessage(message);
+            UiManager.instance.ShowMessage(LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck för att placera upplevelsen!");
         }
         else if(locationServiceFailure)
         {
