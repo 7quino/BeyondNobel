@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 9188874720398099652}
   - component: {fileID: 2014866592946293878}
   - component: {fileID: 1281906336257930348}
+  - component: {fileID: 1555583954}
   m_Layer: 0
   m_Name: PrefabPeace
   m_TagString: Untagged
@@ -359,6 +360,21 @@ MonoBehaviour:
   altitude: 38
   quaternion: {x: 0, y: 0, z: 0, w: 0}
   anchorPrefab: {fileID: 7675868587673008736}
+  userDirection: Look up!
+  showDirectly: 0
+--- !u!114 &1555583954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675868587673008736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f908d85c6177f0c408b6a5d005b377f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userDirection: Look up!
 --- !u!1 &7890609033725853416
 GameObject:
   m_ObjectHideFlags: 0

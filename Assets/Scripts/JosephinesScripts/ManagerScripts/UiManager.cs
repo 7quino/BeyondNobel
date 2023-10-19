@@ -69,6 +69,7 @@ public class UiManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(_hasDisplayedPrivacyPromptKey, 1);
         PlayerPrefs.Save();
+        onPrivacyPromptIsOk.Invoke(true);
         SwitchToInstructions(true);
     }
 
@@ -145,7 +146,7 @@ public class UiManager : MonoBehaviour
         if (_imageSaved)
         {
            
-            StartCoroutine(PopUpMessage(LanguageManager.instance._localeID == 0 ? "Image already saved!" : "Bilden är redan sparad!"));
+            StartCoroutine(PopUpMessage(LanguageManager.instance._localeID == 0 ? "Image already saved!" : "Bilden ï¿½r redan sparad!"));
             return;
         }
 
@@ -201,7 +202,7 @@ public class UiManager : MonoBehaviour
     void Start()
     {
         CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => OnLocationServiceFinniched("Location found!", "Plats hittad!"));
-        CheckLocationService.Instance.onLocationServiceError.AddListener(() => OnLocationServiceFinniched("No location service,\nusing plan B", "Hittar inte plats,\nanvänder plan B"));
+        CheckLocationService.Instance.onLocationServiceError.AddListener(() => OnLocationServiceFinniched("No location service,\nusing plan B", "Hittar inte plats,\nanvï¿½nder plan B"));
         
         StartCoroutine(IntroSequence());
     }
@@ -265,7 +266,7 @@ public class UiManager : MonoBehaviour
         File.WriteAllBytes(filePath, ss.EncodeToPNG());
 
         new NativeShare().AddFile(filePath)
-            .SetSubject("Subject goes here").SetText(LanguageManager.instance._localeID == 0 ? "Greetings from Beyond Nobel!" : "Hälsningar från Beyond Nobel!").SetUrl("https://github.com/yasirkula/UnityNativeShare")
+            .SetSubject("Subject goes here").SetText(LanguageManager.instance._localeID == 0 ? "Greetings from Beyond Nobel!" : "Hï¿½lsningar frï¿½n Beyond Nobel!").SetUrl("https://github.com/yasirkula/UnityNativeShare")
             .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
             .Share();
 
