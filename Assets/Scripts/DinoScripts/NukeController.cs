@@ -11,7 +11,8 @@ public class NukeController : MonoBehaviour {
 
     private void OnEnable() {
         StartCoroutine(Fly());
-        transform.LookAt(_peaceController._limiter);
+        var limiterSpatialOffset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)) + _peaceController._limiter.position;
+        transform.LookAt(_peaceController._limiter.position);
     }
 
     private void Update() {
@@ -20,6 +21,7 @@ public class NukeController : MonoBehaviour {
 
     IEnumerator Fly() {
         var randomLimiterOffset = Random.Range(-10, 10);
+        
         var limiter = _peaceController._limiter;
         yield return new WaitWhile(
             () => transform.position.y < 
