@@ -14,6 +14,8 @@ public class PortalManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        MainCamera = Camera.main.gameObject;
+
         foreach (var rend in Renderers)
         {
             Materials.Add(rend.material);
@@ -26,12 +28,12 @@ public class PortalManager : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log($"{other.name} has entered the building!");
-        MainCamera = Camera.main.gameObject;
+        audioSource.Play();
 
         // Play audio track when collision occurs
         if (audioClip != null && !audioSource.isPlaying)
         {
-            audioSource.Play();
+            
         }
     }
 
