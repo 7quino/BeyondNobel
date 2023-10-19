@@ -72,6 +72,7 @@ public class StortorgetEffectPlacement : MonoBehaviour
 
                 // Instantiate the effect
                 Instantiate(chemistryEffectPrefab, hitPose.position, Quaternion.identity);
+                Destroy(gameObject,3f);
             }
         }
     }

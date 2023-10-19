@@ -67,7 +67,10 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 11700000, guid: b83321a1a7ccb4f44b92870669102f9e, type: 2}
+        m_Name: SDF
+        m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!73398921 &2178185100704166384
