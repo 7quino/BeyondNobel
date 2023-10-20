@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Google.XR.ARCoreExtensions;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -15,25 +17,33 @@ public class AnchorPlacePrefab : MonoBehaviour
     [SerializeField] Quaternion quaternion;
     [SerializeField] protected GameObject anchorPrefab;
 
+    [SerializeField] protected LocalizedString localizedString;
+    [SerializeField] protected bool giveUserDirection = false;
+    [SerializeField] protected bool showDirectly = false;
+
+    //[SerializeField] protected TextMeshProUGUI debugObject;
+
     protected ARRaycastManager arRaycastManager;
     protected AREarthManager earthManager;
     protected ARAnchorManager anchorManager;
     protected ARGeospatialAnchor anchorGeo = null;
     protected GameObject anchorPoint = null;
     protected GameObject anchoredAsset = null;
+    protected bool privacyPromptOkay = false;
     protected bool locationServiceSuccess = false;
     protected bool locationServiceFailure = false;
     protected bool buttonIsActive = false;
 
     protected void Start()
     {
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
+        CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
+        UiManager.instance.onPrivacyPromptIsOk.AddListener((enable) => privacyPromptOkay = true);
+        localizedString.StringChanged += UpdateText;
+
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
         earthManager = FindObjectOfType<AREarthManager>();
         anchorManager = FindObjectOfType<ARAnchorManager>();
-
-        //CheckLocationService.Instance.onLocationServiceSuccess.AddListener(PlaceAnchor);
-        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
-        CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
     }
 
     void Update()
@@ -57,15 +67,17 @@ public class AnchorPlacePrefab : MonoBehaviour
 
     public void PlaceAnchor()
     {
+        if (!privacyPromptOkay) return;
         if (!locationServiceSuccess) return;
         if (anchorGeo != null) return;
 
+        
 
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
         {
             //For testing at camera altitude
-            var cameraGeospatialPose = earthManager.CameraGeospatialPose;
+            //var cameraGeospatialPose = earthManager.CameraGeospatialPose;
 
             anchorGeo = ARAnchorManagerExtensions.AddAnchor(
                     anchorManager,
@@ -76,10 +88,13 @@ public class AnchorPlacePrefab : MonoBehaviour
                     quaternion);
 
             anchorPoint = Instantiate(new GameObject(), anchorGeo.transform);
-            //anchorPoint.transform.position = anchorGeo.transform.position;
 
-            //For testing
-            //ShowButton();
+            if (showDirectly)
+            {
+                ShowButton();
+            }
+
+            //if (debugObject != null) debugObject.text = "anchor placerat";
         }
     }
 
@@ -98,23 +113,21 @@ public class AnchorPlacePrefab : MonoBehaviour
         }
 
 
-        if (anchorGeo == null && anchoredAsset == null)
+        if (giveUserDirection)
         {
-
-            string message = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "Vänta på platsen!";
-            UiManager.instance.locationServiceMessage.text = message;
+            localizedString.RefreshString();
         }
 
         if (locationServiceFailure && anchoredAsset == null)
         {
-            string message = LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck för att placera upplevelsen!";
-            UiManager.instance.ShowMessage(message);
+            UiManager.instance.ShowMessage(LanguageManager.instance._localeID == 0 ? "tap to place experience!" : "Tryck fï¿½r att placera upplevelsen!");
         }
         else if (locationServiceFailure)
         {
             anchoredAsset.SetActive(true);
         }
     }
+
 
     public virtual void HideButton()
     {
@@ -136,8 +149,15 @@ public class AnchorPlacePrefab : MonoBehaviour
         }
     }
 
+
     protected IEnumerator PlaceWithPlaneTracking()
     {
         yield return null;
+    }
+
+
+    void UpdateText(string value)
+    {
+        UiManager.instance.ShowMessage(value);
     }
 }

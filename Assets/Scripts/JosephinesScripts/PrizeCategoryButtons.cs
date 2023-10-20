@@ -25,6 +25,9 @@ public class PrizeCategoryButtons : MonoBehaviour
             priceCategoryButton.audioButton.button.onClick.AddListener(() => OnAudioButtonClicked(priceCategoryButton.audioButton));
             priceCategoryButton.InactivateButton(audioSource);
         }
+
+        UiManager.instance.onHidePrizeButtons.AddListener(TurnOffAudioButtons);
+        UiManager.instance.onPhotoButtonPressed.AddListener(TurnOffAudioButtons);
     }
 
 
@@ -53,7 +56,16 @@ public class PrizeCategoryButtons : MonoBehaviour
         }
         else
         {
+            TurnOffAudioButtons();
             audioButton.ActivateButton(audioSource);
+        }
+    }
+
+    public void TurnOffAudioButtons()
+    {
+        foreach (var button in prizeCategoryButtons)
+        {
+            button.audioButton.InActivateButton(audioSource);
         }
     }
 }

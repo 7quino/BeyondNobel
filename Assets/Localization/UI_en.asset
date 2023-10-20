@@ -116,11 +116,10 @@ MonoBehaviour:
     m_Localized: Example
     m_Metadata:
       m_Items: []
-  - m_Id: 1156253307887616
-    m_Localized: '{0}'
+  - m_Id: 1744020052107264
+    m_Localized: Look up!
     m_Metadata:
-      m_Items:
-      - rid: 1803903180636684288
+      m_Items: []
   - m_Id: 1161526491734016
     m_Localized: Powered by the Nobel Museum
     m_Metadata:
@@ -128,6 +127,38 @@ MonoBehaviour:
   - m_Id: 1168324577714176
     m_Localized: "1. Beyond Nobel is an \naugmented reality app that \nuses your
       camera to display 3D \ncontent in the real world."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1753205217157120
+    m_Localized: Find the heart!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1753339518771200
+    m_Localized: Find the book and walk inside the portal!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1753650987786240
+    m_Localized: Look at the fountain!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1787536547504128
+    m_Localized: Image saved to camera roll!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1787716546060288
+    m_Localized: Image save failed!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1787822276075520
+    m_Localized: Image already saved!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1787947455078400
+    m_Localized: No location service,\nusing plan B!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1788268638101504
+    m_Localized: Location found!
     m_Metadata:
       m_Items: []
   references:

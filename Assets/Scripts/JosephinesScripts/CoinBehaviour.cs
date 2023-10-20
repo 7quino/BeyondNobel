@@ -42,7 +42,7 @@ public class CoinBehaviour : MonoBehaviour
 
     IEnumerator GrowCoin(Transform coinTransform)
     {
-        Vector3 coinEndSize = new Vector3( 1, Random.Range(20.0f, 2000.0f), 1);
+        Vector3 coinEndSize = new Vector3( 1, Random.Range(20.0f, 1500.0f), 1);
         Vector3 coinStartSize = Vector3.one;
         float elapsedTime = Time.deltaTime;
         float endTime = Time.deltaTime + Random.Range(30, 300);

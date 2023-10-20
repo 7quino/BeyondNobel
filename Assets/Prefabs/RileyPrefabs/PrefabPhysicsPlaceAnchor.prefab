@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91013980ef27e64da63fe99def4519b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  earthManager: {fileID: 0}
-  anchorManager: {fileID: 0}
-  latitude: 59.3249505502638
-  longitude: 18.0709225687356
-  altitude: 300
+  latitude: 59.32498658360486
+  longitude: 18.07082989727093
+  altitude: 100
   quaternion: {x: 0, y: 0, z: 0, w: 0}
   anchorPrefab: {fileID: 5445649441774014157, guid: 8be1fcb3742f3114f806da68b3ba9e8c,
     type: 3}
+  userDirection: Look up!
+  showDirectly: 0
