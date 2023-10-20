@@ -8,7 +8,6 @@ public class PortalManager : MonoBehaviour
     GameObject MainCamera;
     public Renderer[] Renderers;
     private List<Material> Materials = new List<Material>();
-    public AudioClip audioClip;
     private AudioSource audioSource;
 
     // Use this for initialization
@@ -22,30 +21,15 @@ public class PortalManager : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = audioClip;
     }
 
     void OnTriggerEnter(Collider other)
     {
         Debug.Log($"{other.name} has entered the building!");
-        audioSource.Play();
-
-        // Play audio track when collision occurs
-        if (audioClip != null && !audioSource.isPlaying)
-        {
-            
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        Debug.Log($"{other.name} has left the building!");
-
-        // Stop playing audio track on exit
-        if (audioSource.isPlaying)
-        {
+        if (!audioSource.isPlaying)
+            audioSource.Play();
+        else
             audioSource.Stop();
-        }
     }
 
     // Update is called once per frame
