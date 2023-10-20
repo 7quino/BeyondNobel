@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestSceneDuane.unity
     guid: f8db0b80aba21c244ab5bee9f957a6d2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMainExtraMain!!.unity
     guid: 9d339ff9e29299d4db60094f1ee37837
   - enabled: 0
@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DuaneDuaneExtraDuane.unity
     guid: 2b050002b6b66184699548d63ad5f169
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/testDuane.unity
     guid: 75ce29a16b6e4cf43bc150ec15781f7b
   m_configObjects:
