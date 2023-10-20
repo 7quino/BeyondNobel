@@ -1593,6 +1593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
         type: 3}
+      propertyPath: altitude
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
+        type: 3}
       propertyPath: latitude
       value: 59.3251638875524
       objectReference: {fileID: 0}
@@ -1601,6 +1606,22 @@ PrefabInstance:
       propertyPath: longitude
       value: 18.070870741215
       objectReference: {fileID: 0}
+    - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
+        type: 3}
+      propertyPath: anchorPrefab
+      value: 
+      objectReference: {fileID: 8480623390951261718, guid: eab2762887204e3428b6fe1c86b2660e,
+        type: 3}
+    - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
+        type: 3}
+      propertyPath: earthManager
+      value: 
+      objectReference: {fileID: 691323912}
+    - target: {fileID: 1839970413396650879, guid: 119dc2a408a4a95459f5d1cdc3875c58,
+        type: 3}
+      propertyPath: anchorManager
+      value: 
+      objectReference: {fileID: 691323910}
     - target: {fileID: 5898191763365085464, guid: 119dc2a408a4a95459f5d1cdc3875c58,
         type: 3}
       propertyPath: m_Name
