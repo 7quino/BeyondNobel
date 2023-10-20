@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Google.XR.ARCoreExtensions;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -15,8 +17,11 @@ public class AnchorPlacePrefab : MonoBehaviour
     [SerializeField] Quaternion quaternion;
     [SerializeField] protected GameObject anchorPrefab;
 
-    [SerializeField] protected string userDirection = string.Empty;
+    [SerializeField] protected LocalizedString localizedString;
+    [SerializeField] protected bool giveUserDirection = false;
     [SerializeField] protected bool showDirectly = false;
+
+    //[SerializeField] protected TextMeshProUGUI debugObject;
 
     protected ARRaycastManager arRaycastManager;
     protected AREarthManager earthManager;
@@ -34,6 +39,7 @@ public class AnchorPlacePrefab : MonoBehaviour
         CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
         CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
         UiManager.instance.onPrivacyPromptIsOk.AddListener((enable) => privacyPromptOkay = true);
+        localizedString.StringChanged += UpdateText;
 
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
         earthManager = FindObjectOfType<AREarthManager>();
@@ -65,12 +71,13 @@ public class AnchorPlacePrefab : MonoBehaviour
         if (!locationServiceSuccess) return;
         if (anchorGeo != null) return;
 
+        
 
         var earthTrackingState = earthManager.EarthTrackingState;
         if (earthTrackingState == TrackingState.Tracking)
         {
             //For testing at camera altitude
-            var cameraGeospatialPose = earthManager.CameraGeospatialPose;
+            //var cameraGeospatialPose = earthManager.CameraGeospatialPose;
 
             anchorGeo = ARAnchorManagerExtensions.AddAnchor(
                     anchorManager,
@@ -86,6 +93,8 @@ public class AnchorPlacePrefab : MonoBehaviour
             {
                 ShowButton();
             }
+
+            //if (debugObject != null) debugObject.text = "anchor placerat";
         }
     }
 
@@ -103,15 +112,10 @@ public class AnchorPlacePrefab : MonoBehaviour
             anchoredAsset = Instantiate(anchorPrefab, anchorPoint.transform);
         }
 
-        if (userDirection != string.Empty)
-        {
-            UiManager.instance.ShowMessage(userDirection);
-        }
 
-
-        if (anchorGeo == null && anchoredAsset == null)
+        if (giveUserDirection)
         {
-            UiManager.instance.locationServiceMessage.text = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "V�nta p� platsen!";
+            localizedString.RefreshString();
         }
 
         if (locationServiceFailure && anchoredAsset == null)
@@ -123,6 +127,7 @@ public class AnchorPlacePrefab : MonoBehaviour
             anchoredAsset.SetActive(true);
         }
     }
+
 
     public virtual void HideButton()
     {
@@ -144,8 +149,15 @@ public class AnchorPlacePrefab : MonoBehaviour
         }
     }
 
+
     protected IEnumerator PlaceWithPlaneTracking()
     {
         yield return null;
+    }
+
+
+    void UpdateText(string value)
+    {
+        UiManager.instance.ShowMessage(value);
     }
 }

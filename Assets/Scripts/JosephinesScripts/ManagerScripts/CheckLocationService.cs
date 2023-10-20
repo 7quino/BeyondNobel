@@ -172,6 +172,8 @@ public class CheckLocationService : MonoBehaviour
             _localisationServiceOk = true;
             onDebugMessage.Invoke("Ready to start game");
         }
+
+        if (isSessionReady) { onLocationServiceSuccess.Invoke(); }
     }
 
 

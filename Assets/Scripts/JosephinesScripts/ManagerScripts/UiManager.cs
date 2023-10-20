@@ -9,12 +9,15 @@ using static NativeGallery;
 using TMPro;
 using System.IO;
 using System;
+using UnityEngine.Localization;
 
 public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
     public UnityEvent<bool> onPrivacyPromptIsOk = new UnityEvent<bool>();
     public UnityEvent onGameStart = new UnityEvent();
+    public UnityEvent onHidePrizeButtons = new UnityEvent();
+    public UnityEvent onPhotoButtonPressed = new UnityEvent();
     [HideInInspector] public UnityEvent<string> onDebugMessage = new UnityEvent<string>();
 
     [Header("AR Components")]
@@ -33,8 +36,11 @@ public class UiManager : MonoBehaviour
 
     //LocationServiceMessage
     [SerializeField] GameObject locationServiceMessageCanvas;
-    public TextMeshProUGUI locationServiceMessage;
+    bool privacyPromptOkay;
+    bool locationServiceSuccess;
+    bool locationServiceFailure;
     bool _locationServiceIsFinnished = false;
+
 
     //Info button
     [SerializeField] GameObject infoCanvas;
@@ -56,20 +62,25 @@ public class UiManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI stringMessageTmpro;
     [SerializeField] const float pupUpTime = 2f;
 
-    //Share button
-    //private bool isFocus = false;
-    //private bool isProcessing = false;
 
+    //Localized strings
+    [SerializeField] LocalizedString localizedStringLocationSuccess;
+    [SerializeField] LocalizedString localizedStringLocationError;
+    [SerializeField] LocalizedString localizedImageSavedSuccess;
+    [SerializeField] LocalizedString localizedImageSavedError;
+    [SerializeField] LocalizedString localizedImageSavedDone;
 
     [SerializeField] const float introTime = 3f;
     const string _hasDisplayedPrivacyPromptKey = "HasDisplayedGeospatialPrivacyPrompt";
-    bool privacyPromptIsOk = false;
+
     
     public void OnOKClicked()
     {
         PlayerPrefs.SetInt(_hasDisplayedPrivacyPromptKey, 1);
         PlayerPrefs.Save();
+        privacyPromptOkay = true;
         onPrivacyPromptIsOk.Invoke(true);
+
         SwitchToInstructions(true);
     }
 
@@ -89,15 +100,19 @@ public class UiManager : MonoBehaviour
         onGameStart.Invoke();
     }
 
-    public void OnLocationServiceFinniched(string messageEn, string messageSv)
+    public void OnLocationServiceFinnished()
     {
-        if (_locationServiceIsFinnished) return;
-
+        if (!privacyPromptOkay) return;
+        if (!locationServiceSuccess && !locationServiceFailure) return;
+        
         locationServiceMessageCanvas.SetActive(false);
+
+        if (_locationServiceIsFinnished) return;
         _locationServiceIsFinnished = true;
 
-        string message = LanguageManager.instance._localeID == 0 ? messageEn : messageSv;
-        StartCoroutine(PopUpMessage(message, 2.0f));
+
+        //if (locationServiceSuccess) localizedStringLocationSuccess.RefreshString();
+        if (locationServiceFailure) localizedImageSavedError.RefreshString();
     }
 
     public void OnContinueClicked()
@@ -125,6 +140,7 @@ public class UiManager : MonoBehaviour
             bottomButtons.SetActive(false);
             visibleIcon.SetActive(true);
             invisibleIcon.SetActive(false);
+            onHidePrizeButtons.Invoke();
         }
         else
         {
@@ -136,6 +152,7 @@ public class UiManager : MonoBehaviour
 
     public void OnCameraButton()
     {
+        onPhotoButtonPressed.Invoke();
         StartCoroutine(CaptureScreenShot());
     }
 
@@ -145,8 +162,7 @@ public class UiManager : MonoBehaviour
 
         if (_imageSaved)
         {
-           
-            StartCoroutine(PopUpMessage(LanguageManager.instance._localeID == 0 ? "Image already saved!" : "Bilden �r redan sparad!"));
+            localizedImageSavedDone.RefreshString();
             return;
         }
 
@@ -158,10 +174,8 @@ public class UiManager : MonoBehaviour
         NativeGallery.Permission permission = SaveImageToGallery(_lastScreenShotTexture, "NobelAR", Time.time.ToString());
         onDebugMessage.Invoke("Save screenshot: " + permission.ToString());
 
-        string success = LanguageManager.instance._localeID == 0 ? "Image saved to camera roll!" : "Bilden sparad i galleriet!";
-        string failure = LanguageManager.instance._localeID == 0 ? "Image save failed!" : "Kunde inte spara bild!";
-        string message = permission == Permission.Granted ? success : failure;
-        StartCoroutine(PopUpMessage(message));
+        _ = permission == Permission.Granted ? localizedImageSavedSuccess.RefreshString() : localizedImageSavedError.RefreshString();
+
         if (permission == Permission.Granted) _imageSaved = true;
         _imageSaved = true;
 
@@ -201,10 +215,24 @@ public class UiManager : MonoBehaviour
 
     void Start()
     {
-        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => OnLocationServiceFinniched("Location found!", "Plats hittad!"));
-        CheckLocationService.Instance.onLocationServiceError.AddListener(() => OnLocationServiceFinniched("No location service,\nusing plan B", "Hittar inte plats,\nanv�nder plan B"));
-        
+        //Checkings for find location message
+        CheckLocationService.Instance.onLocationServiceSuccess.AddListener(() => locationServiceSuccess = true);
+        CheckLocationService.Instance.onLocationServiceError.AddListener(() => locationServiceFailure = true);
+
+
+        //Localized strings
+        localizedStringLocationSuccess.StringChanged += ShowMessage;
+        localizedStringLocationError.StringChanged += ShowMessage;
+        localizedImageSavedSuccess.StringChanged += ShowMessage;
+        localizedImageSavedError.StringChanged += ShowMessage;
+        localizedImageSavedDone.StringChanged += ShowMessage;
+
         StartCoroutine(IntroSequence());
+    }
+
+    private void Update()
+    {
+        OnLocationServiceFinnished();
     }
 
     IEnumerator IntroSequence()
@@ -220,8 +248,6 @@ public class UiManager : MonoBehaviour
 
     void SwitchToInstructions(bool enable)
     {
-        privacyPromptIsOk = enable;
-        onPrivacyPromptIsOk.Invoke(enable);
         SessionOrigin.gameObject.SetActive(enable);
         Session.gameObject.SetActive(enable);
         ARCoreExtensions.gameObject.SetActive(enable);
@@ -295,7 +321,6 @@ public class UiManager : MonoBehaviour
     }
 
 
-    
     public void ShowMessage(string message)
     {
         StartCoroutine(PopUpMessage(message));
