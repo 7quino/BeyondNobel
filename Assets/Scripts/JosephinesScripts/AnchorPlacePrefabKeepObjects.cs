@@ -31,14 +31,9 @@ public class AnchorPlacePrefabKeepObjects : AnchorPlacePrefab
             anchoredAsset = Instantiate(anchorPrefab, anchorPoint.transform);
         }
 
-        if (userDirection != string.Empty)
+        if (giveUserDirection)
         {
-            UiManager.instance.ShowMessage(userDirection);
-        }
-
-        if (anchorGeo == null && anchoredAsset == null)
-        {
-            UiManager.instance.locationServiceMessage.text = LanguageManager.instance._localeID == 0 ? "Wait for location!" : "V�nta p� platsen!";
+            localizedString.RefreshString();
         }
 
         if (locationServiceFailure && anchoredAsset == null)
