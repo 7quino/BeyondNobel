@@ -30,6 +30,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject introCanvas;
     [SerializeField] GameObject privacyPromptCanvas;
     [SerializeField] GameObject instructionsCanvas;
+    [SerializeField] GameObject popUpMessageExampleButtons;
     [SerializeField] GameObject arViewCanvas;
     public GameObject vpsCheckCanvas;
     [SerializeField] GameObject ScreenShotCanvas;
@@ -69,6 +70,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] LocalizedString localizedImageSavedSuccess;
     [SerializeField] LocalizedString localizedImageSavedError;
     [SerializeField] LocalizedString localizedImageSavedDone;
+    [SerializeField] LocalizedString localizedStringUseEarphones;
 
     [SerializeField] const float introTime = 3f;
     const string _hasDisplayedPrivacyPromptKey = "HasDisplayedGeospatialPrivacyPrompt";
@@ -87,6 +89,18 @@ public class UiManager : MonoBehaviour
     public void OnLearnMoreClicked()
     {
         Application.OpenURL("https://developers.google.com/ar/data-privacy");
+    }
+
+    public void OnClickedExampleButtons()
+    {
+        StartCoroutine(ExampleMessageShow());
+    }
+
+    IEnumerator ExampleMessageShow()
+    {
+        popUpMessageExampleButtons.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        popUpMessageExampleButtons.SetActive(false);
     }
 
     public void OnGetStartedClicked()
@@ -110,9 +124,9 @@ public class UiManager : MonoBehaviour
         if (_locationServiceIsFinnished) return;
         _locationServiceIsFinnished = true;
 
-
+        //localizedStringUseEarphones.RefreshString();
         //if (locationServiceSuccess) localizedStringLocationSuccess.RefreshString();
-        if (locationServiceFailure) localizedImageSavedError.RefreshString();
+        //if (locationServiceFailure) localizedImageSavedError.RefreshString();
     }
 
     public void OnContinueClicked()
@@ -226,6 +240,7 @@ public class UiManager : MonoBehaviour
         localizedImageSavedSuccess.StringChanged += ShowMessage;
         localizedImageSavedError.StringChanged += ShowMessage;
         localizedImageSavedDone.StringChanged += ShowMessage;
+        localizedStringUseEarphones.StringChanged += ShowMessage;
 
         StartCoroutine(IntroSequence());
     }

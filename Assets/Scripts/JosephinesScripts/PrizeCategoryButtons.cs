@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Localization;
 
 public class PrizeCategoryButtons : MonoBehaviour
 {
     public static PrizeCategoryButtons instance;
     public List<PrizeCategoryButton> prizeCategoryButtons = new List<PrizeCategoryButton>();
     [HideInInspector] public AudioSource audioSource;
+    [SerializeField] LocalizedString messagePressAgainToTurnOff;
+    [SerializeField] LocalizedString messageTurnUpVolume;
+    bool firstTimePressed = true;
 
     private void Awake()
     {
@@ -28,6 +32,9 @@ public class PrizeCategoryButtons : MonoBehaviour
 
         UiManager.instance.onHidePrizeButtons.AddListener(TurnOffAudioButtons);
         UiManager.instance.onPhotoButtonPressed.AddListener(TurnOffAudioButtons);
+
+        messagePressAgainToTurnOff.StringChanged += UpdateText;
+        messageTurnUpVolume.StringChanged += UpdateText;
     }
 
 
@@ -39,9 +46,29 @@ public class PrizeCategoryButtons : MonoBehaviour
         }
         else
         {
+            if (firstTimePressed)
+            {
+                firstTimePressed = false;
+                StartCoroutine(ShowFirstMessage());
+            }
+
             prizeCategoryButton.ActivateButton();
             OnAudioButtonClicked(prizeCategoryButton.audioButton);
         }
+    }
+
+    IEnumerator ShowFirstMessage()
+    {
+        yield return new WaitForSeconds(3.0f);
+        messagePressAgainToTurnOff.RefreshString();
+
+        yield return new WaitForSeconds(3.0f);
+        messageTurnUpVolume.RefreshString();
+    }
+
+    void UpdateText(string value)
+    {
+        UiManager.instance.ShowMessage(value);
     }
 
     public void OnAudioButtonClicked(AudioButton audioButton)

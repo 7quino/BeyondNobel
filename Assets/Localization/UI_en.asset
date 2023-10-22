@@ -62,14 +62,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 960981557248
-    m_Localized: "2. Press the prize category \nbuttons to toogle prize filters \non/off
-      and audio buttons \nto learn more!"
+    m_Localized: "2. Toggle the prize buttons\n to show/hide experiences and \naudio
+      buttons to learn more!"
     m_Metadata:
       m_Items: []
   - m_Id: 1006846271488
     m_Localized: "Beyond Nobel is an augmented reality app that uses your camera
-      to display 3D content in the real world. \n\nPress the prize category buttons
-      to toogle prize filters on/off and audio buttons to learn more!"
+      to display 3D content in the real world. \n\nToogle the prize buttons to show/hide
+      experiences and audio buttons to learn more!"
     m_Metadata:
       m_Items: []
   - m_Id: 1033777897472
@@ -117,7 +117,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1744020052107264
-    m_Localized: Look up!
+    m_Localized: Look up in the sky!
     m_Metadata:
       m_Items: []
   - m_Id: 1161526491734016
@@ -125,8 +125,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1168324577714176
-    m_Localized: "1. Beyond Nobel is an \naugmented reality app that \nuses your
-      camera to display 3D \ncontent in the real world."
+    m_Localized: "1. Beyond Nobel uses \nyour camera to display 3D \ncontent in the
+      real world."
     m_Metadata:
       m_Items: []
   - m_Id: 1753205217157120
@@ -134,7 +134,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1753339518771200
-    m_Localized: Find the book and walk inside the portal!
+    m_Localized: "Find the book and \nwalk inside the portal!"
     m_Metadata:
       m_Items: []
   - m_Id: 1753650987786240
@@ -159,6 +159,32 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1788268638101504
     m_Localized: Location found!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2493403156701184
+    m_Localized: Turned on
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2493449965133824
+    m_Localized: Turned off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2493495825653760
+    m_Localized: This is an example
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2497371916197888
+    m_Localized: 'Press the prize button
+
+      again to turn off experiece'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2497670131212288
+    m_Localized: "Use earphones for \na better experience"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2498838987268096
+    m_Localized: Look around!
     m_Metadata:
       m_Items: []
   references:

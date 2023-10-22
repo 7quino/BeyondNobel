@@ -135,6 +135,30 @@ MonoBehaviour:
     m_Key: LOCATION_SERVICE_DONE_SUCCESS
     m_Metadata:
       m_Items: []
+  - m_Id: 2493403156701184
+    m_Key: EXAMPLE_TURNED_ON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2493449965133824
+    m_Key: EXAMPLE_TURNED_OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2493495825653760
+    m_Key: THIS_IS_AN_EXAMPLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2497371916197888
+    m_Key: PRESS_AGAIN_TO_TURN_OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2497670131212288
+    m_Key: TURN_UP_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2498838987268096
+    m_Key: USER_DIRECTION_CHEMISTRY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
