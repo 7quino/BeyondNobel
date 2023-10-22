@@ -40,6 +40,7 @@ public class PrizeCategoryButtons : MonoBehaviour
         else
         {
             prizeCategoryButton.ActivateButton();
+            OnAudioButtonClicked(prizeCategoryButton.audioButton);
         }
     }
 
