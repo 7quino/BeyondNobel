@@ -184,6 +184,34 @@ MonoBehaviour:
     m_Localized: Titta runt omkring!
     m_Metadata:
       m_Items: []
+  - m_Id: 2916503312654336
+    m_Localized: "Tryck p\xE5 pris-knapparna \nf\xF6r att visa upplevelser"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916577405034496
+    m_Localized: "Tryck samma knapp igen\n f\xF6r att g\xF6mma upplevelsen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916600062664704
+    m_Localized: "Flera upplevelser \nkan visas samtidigt!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916663916748800
+    m_Localized: "Toggla ljud\nber\xE4ttelser av/p\xE5"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916680836571136
+    m_Localized: "F\xE5nga upplevelsen\n p\xE5 foto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916705633296384
+    m_Localized: "Spara foto till galleriet eller \ndela p\xE5 sociala medier"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916725078089728
+    m_Localized: "G\xE5 tillbaks"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

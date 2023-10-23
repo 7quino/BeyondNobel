@@ -307,16 +307,6 @@ PrefabInstance:
       objectReference: {fileID: 1555583954}
     - target: {fileID: 7466108746292072000, guid: 48b22a02f5e71244792b0d0dd111e2c4,
         type: 3}
-      propertyPath: prizeCategoryButtons.Array.data[6].onButtonClickEnable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1389500681}
-    - target: {fileID: 7466108746292072000, guid: 48b22a02f5e71244792b0d0dd111e2c4,
-        type: 3}
-      propertyPath: prizeCategoryButtons.Array.data[6].onButtonClickEnable.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1555583954}
-    - target: {fileID: 7466108746292072000, guid: 48b22a02f5e71244792b0d0dd111e2c4,
-        type: 3}
       propertyPath: prizeCategoryButtons.Array.data[0].onButtonClickDisable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 440544520}
@@ -348,11 +338,6 @@ PrefabInstance:
     - target: {fileID: 7466108746292072000, guid: 48b22a02f5e71244792b0d0dd111e2c4,
         type: 3}
       propertyPath: prizeCategoryButtons.Array.data[5].onButtonClickDisable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1389500681}
-    - target: {fileID: 7466108746292072000, guid: 48b22a02f5e71244792b0d0dd111e2c4,
-        type: 3}
-      propertyPath: prizeCategoryButtons.Array.data[6].onButtonClickDisable.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1389500681}
     m_RemovedComponents: []

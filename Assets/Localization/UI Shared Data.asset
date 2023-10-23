@@ -159,6 +159,43 @@ MonoBehaviour:
     m_Key: USER_DIRECTION_CHEMISTRY
     m_Metadata:
       m_Items: []
+  - m_Id: 2916503312654336
+    m_Key: ONBOARDING_SEQUENCE_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916577405034496
+    m_Key: 'ONBOARDING_SEQUENCE_2
+
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916600062664704
+    m_Key: 'ONBOARDING_SEQUENCE_3
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916663916748800
+    m_Key: 'ONBOARDING_SEQUENCE_4
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916680836571136
+    m_Key: ONBOARDING_SEQUENCE_5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916705633296384
+    m_Key: 'ONBOARDING_SEQUENCE_6
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916725078089728
+    m_Key: ONBOARDING_SEQUENCE_7
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

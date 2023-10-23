@@ -187,6 +187,38 @@ MonoBehaviour:
     m_Localized: Look around!
     m_Metadata:
       m_Items: []
+  - m_Id: 2916503312654336
+    m_Localized: "Press the prize buttons\n to show experiences"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916577405034496
+    m_Localized: 'Press the same button
+
+      again to hide experience'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916600062664704
+    m_Localized: "Several experiences \ncan be viewed at \nthe same time!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916663916748800
+    m_Localized: "Toogle audio \nstories on/off"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916680836571136
+    m_Localized: "Capture the experience \non photo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916705633296384
+    m_Localized: 'Save photo to gallery
+
+      or share on social media'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2916725078089728
+    m_Localized: Go back
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

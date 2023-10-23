@@ -10,9 +10,6 @@ public class PrizeCategoryButtons : MonoBehaviour
     public static PrizeCategoryButtons instance;
     public List<PrizeCategoryButton> prizeCategoryButtons = new List<PrizeCategoryButton>();
     [HideInInspector] public AudioSource audioSource;
-    [SerializeField] LocalizedString messagePressAgainToTurnOff;
-    [SerializeField] LocalizedString messageTurnUpVolume;
-    bool firstTimePressed = true;
 
     private void Awake()
     {
@@ -26,15 +23,12 @@ public class PrizeCategoryButtons : MonoBehaviour
         foreach (var priceCategoryButton in prizeCategoryButtons)
         {
             priceCategoryButton.button.onClick.AddListener(() => OnPriceButtonClicked(priceCategoryButton));
-            priceCategoryButton.audioButton.button.onClick.AddListener(() => OnAudioButtonClicked(priceCategoryButton.audioButton));
             priceCategoryButton.InactivateButton(audioSource);
         }
 
+        UiManager.instance.onTurnOffAudioStories.AddListener(TurnOffAudioButtons);
         UiManager.instance.onHidePrizeButtons.AddListener(TurnOffAudioButtons);
         UiManager.instance.onPhotoButtonPressed.AddListener(TurnOffAudioButtons);
-
-        messagePressAgainToTurnOff.StringChanged += UpdateText;
-        messageTurnUpVolume.StringChanged += UpdateText;
     }
 
 
@@ -46,24 +40,9 @@ public class PrizeCategoryButtons : MonoBehaviour
         }
         else
         {
-            if (firstTimePressed)
-            {
-                firstTimePressed = false;
-                StartCoroutine(ShowFirstMessage());
-            }
-
             prizeCategoryButton.ActivateButton();
-            OnAudioButtonClicked(prizeCategoryButton.audioButton);
+            if (UiManager.instance.audioIsOn) OnAudioButtonClicked(prizeCategoryButton.audioButton);
         }
-    }
-
-    IEnumerator ShowFirstMessage()
-    {
-        yield return new WaitForSeconds(3.0f);
-        messagePressAgainToTurnOff.RefreshString();
-
-        yield return new WaitForSeconds(3.0f);
-        messageTurnUpVolume.RefreshString();
     }
 
     void UpdateText(string value)
@@ -135,9 +114,7 @@ public class PrizeCategoryButton
 public class AudioButton
 {
     [Header("Audio button")]
-    public Button button;
     public GameObject audioButtonActiveObject;
-    public GameObject audioButtonInactiveObject;
     public AudioClip audioClipEn;
     public AudioClip audioClipSv;
     [HideInInspector] public bool isActive = false;
@@ -154,7 +131,6 @@ public class AudioButton
     {
         isActive = true;
         audioButtonActiveObject.SetActive(true);
-        audioButtonInactiveObject.SetActive(false);
 
         audioSource.clip = audioClipCurrentLanguage;
         audioSource.Play();
@@ -164,7 +140,6 @@ public class AudioButton
     {
         isActive = false;
         audioButtonActiveObject.SetActive(false);
-        audioButtonInactiveObject.SetActive(true);
 
         if (audioSource.clip = audioClipCurrentLanguage)
         {

@@ -10,12 +10,14 @@ using TMPro;
 using System.IO;
 using System;
 using UnityEngine.Localization;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class UiManager : MonoBehaviour
 {
     public static UiManager instance;
     public UnityEvent<bool> onPrivacyPromptIsOk = new UnityEvent<bool>();
     public UnityEvent onGameStart = new UnityEvent();
+    public UnityEvent onTurnOffAudioStories = new UnityEvent();
     public UnityEvent onHidePrizeButtons = new UnityEvent();
     public UnityEvent onPhotoButtonPressed = new UnityEvent();
     [HideInInspector] public UnityEvent<string> onDebugMessage = new UnityEvent<string>();
@@ -42,29 +44,40 @@ public class UiManager : MonoBehaviour
     bool locationServiceFailure;
     bool _locationServiceIsFinnished = false;
 
+    [Header("Onboarding Sequance")]
+    [SerializeField] List<GameObject> onboardingSequence = new List<GameObject>();
+    [SerializeField] GameObject saveButton;
+    [SerializeField] GameObject shareButton;
+    [SerializeField] int onboardingIndex = 0;
+    GameObject pressedPrizeButton = null;
+    
 
-    //Info button
+    [Header("Info Button")]
     [SerializeField] GameObject infoCanvas;
 
-    //Visibility button
+    [Header("Audio Button")]
+    [SerializeField] GameObject audioOnIcon;
+    [SerializeField] GameObject audioOffIcon;
+    public bool audioIsOn = true;
+
+    [Header("Visibility Button")]
     [SerializeField] GameObject bottomButtons;
     [SerializeField] GameObject visibleIcon;
     [SerializeField] GameObject invisibleIcon;
 
-    //Camera button
+    [Header("Photo Button")]
     [SerializeField] Image screenShotImage;
     Texture2D _lastScreenShotTexture;
 
-    //Save button
+    [Header("Save Button")]
     bool _imageSaved = false;
 
-    //PopUp Message
+    [Header("PopUp Message")]
     [SerializeField] GameObject popUpMessage;
     [SerializeField] TextMeshProUGUI stringMessageTmpro;
     [SerializeField] const float pupUpTime = 2f;
 
-
-    //Localized strings
+    [Header("Localized strings")]
     [SerializeField] LocalizedString localizedStringLocationSuccess;
     [SerializeField] LocalizedString localizedStringLocationError;
     [SerializeField] LocalizedString localizedImageSavedSuccess;
@@ -112,14 +125,21 @@ public class UiManager : MonoBehaviour
 
         instructionsCanvas.SetActive(false);
         onGameStart.Invoke();
+
+#if UNITY_EDITOR
+        locationServiceMessageCanvas.SetActive(false);
+        OnboardingSequence();
+#endif
     }
 
     public void OnLocationServiceFinnished()
     {
+
         if (!privacyPromptOkay) return;
         if (!locationServiceSuccess && !locationServiceFailure) return;
         
         locationServiceMessageCanvas.SetActive(false);
+        OnboardingSequence();
 
         if (_locationServiceIsFinnished) return;
         _locationServiceIsFinnished = true;
@@ -128,6 +148,18 @@ public class UiManager : MonoBehaviour
         //if (locationServiceSuccess) localizedStringLocationSuccess.RefreshString();
         //if (locationServiceFailure) localizedImageSavedError.RefreshString();
     }
+
+
+    public void OnboardingSequence(GameObject thisObject = null)
+    {
+        if (onboardingIndex == 1) pressedPrizeButton = thisObject;
+        if (onboardingIndex == 2 && thisObject != pressedPrizeButton) return;
+
+        if (onboardingIndex != 0) onboardingSequence[onboardingIndex - 1].SetActive(false);
+        if (onboardingIndex != onboardingSequence.Count) onboardingSequence[onboardingIndex].SetActive(true);
+        onboardingIndex++;
+    }
+
 
     public void OnContinueClicked()
     {
@@ -145,6 +177,15 @@ public class UiManager : MonoBehaviour
     {
         infoCanvas.SetActive(false);
         if (!_locationServiceIsFinnished) locationServiceMessageCanvas.SetActive(true);
+    }
+
+    public void OnAudioButtonPressed()
+    {
+        audioIsOn = !audioIsOn;
+        audioOnIcon.SetActive(audioIsOn);
+        audioOffIcon.SetActive(!audioIsOn);
+
+        if (!audioIsOn) onTurnOffAudioStories.Invoke();
     }
 
     public void OnVisibilityButtonClicked()
