@@ -1,7 +1,32 @@
-Introducing Beyond Nobel! 
+# Introducing Beyond Nobel! (School project)
 
-Welcome to our AR Nobel Prize Museum experience! This build gives you the opportunity to experience the Nobel Prize Categories like never before. 
-Six spectacular experiences, anchored to real world positions using Google's Geospatial API technology, invites you to explore the remarkable legacy of Nobel laureates in a unique and engaging way.
-Through user tested UI and beautiful visuals representing a selection of awarded prizes from each Nobel category, the UX is at the forefront of this experience. The app also includes photo function, saving to mobile gallery and sharing button, so you can save and share the experience on your Social Media. Lastly, each Nobel Prize category also comes to life through a rich audio experience, telling more about the featured prizes.
+Summary
+  - AR experience using geospatial anchors
+  - On site multi-part experience on Stockholms Stortorget
+  - Project built for the Nobel Museum sprint in Hyper Island
 
-We hope you enjoy it! # BeyondNobel
+Features
+  - Opportunity to experience the Nobel Prize Categories like never before
+  - Six spectacular experiences, anchored to real world positions using Google's Geospatial API technology
+  - Explore the remarkable legacy of Nobel laureates in a unique and engaging way
+  - Photo function: Save photos to mobile gallery and share to Social Media
+  - Rich audio experiences for each Prize category, telling more about the featured prizes
+
+Planned features
+  - WebXR version for easy access to the app through the browser
+  - Remote access (?)
+  - 
+
+Unity Project
+ - Editor version: 2021.3.24f1 LTS
+ - The project is arranged per function and type: Each folder has their specific "team member" folders
+ - The experiences can be accessed through separate scenes in the "Scenes" folder and all together in the "MainMainExtraMain" scene
+ - Every experience is anchored at a specific geolocation, which can be manipulated to anyones need
+
+Credits
+ - Josephine: UI/UX, Gameplay programming, 2D Graphics design
+ - Duane: UX, Gameplay programming
+ - Heba: Programming, VFX, Documentation
+ - Feinish: Programming
+ - Riley: Product owner, programming
+ - Dino: Localisation, VFX, programming, documentation
