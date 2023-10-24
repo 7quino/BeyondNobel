@@ -45,14 +45,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 960981557248
     m_Localized: "2. Tryck p\xE5 prisknapparna f\xF6r \natt visa/g\xF6m upplevelser
-      och \nljudknapparna f\xF6r att h\xF6ra mer!"
+      och \nlyssna p\xE5 ljud ber\xE4ttelserna!"
     m_Metadata:
       m_Items: []
   - m_Id: 1006846271488
     m_Localized: "Beyond Nobel \xE4r en augmented reality app som anv\xE4nder din
       kamera f\xF6r att visa 3D-inneh\xE5ll  i den verkliga v\xE4rlden.\n\nTryck
-      p\xE5 prisknapparna f\xF6r att visa/g\xF6m upplevelser och ljudknapparna f\xF6r
-      att l\xE4ra dig mer!"
+      p\xE5 prisknapparna f\xF6r att visa/g\xF6m upplevelser och lyssna p\xE5 ljud
+      ber\xE4ttelserna!"
     m_Metadata:
       m_Items: []
   - m_Id: 1033777897472
@@ -210,6 +210,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2916725078089728
     m_Localized: "G\xE5 tillbaks"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316418450808832
+    m_Localized: "Vill du g\xE5 igenom onboarding igen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316493054894080
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316529444675584
+    m_Localized: Nej
     m_Metadata:
       m_Items: []
   references:

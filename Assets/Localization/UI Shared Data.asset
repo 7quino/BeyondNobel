@@ -196,6 +196,18 @@ MonoBehaviour:
     m_Key: ONBOARDING_SEQUENCE_7
     m_Metadata:
       m_Items: []
+  - m_Id: 3316418450808832
+    m_Key: ONBOARDING_AGAIN_QUESTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316493054894080
+    m_Key: ONBOARDING_AGAIN_QUESTION_YES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316529444675584
+    m_Key: ONBOARDING_AGAIN_QUESTION_NO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

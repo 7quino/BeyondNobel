@@ -44,6 +44,7 @@ public class UiManager : MonoBehaviour
     bool _locationServiceIsFinnished = false;
 
     [Header("Onboarding Sequance")]
+    [SerializeField] GameObject RunOnboardingAgainQuestion;
     [SerializeField] GameObject onboardingCanvas;
     [SerializeField] List<GameObject> onboardingSequence = new List<GameObject>();
     [SerializeField] GameObject saveButton;
@@ -51,7 +52,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject throwButton;
     [SerializeField] int onboardingIndex = 0;
     GameObject pressedPrizeButton = null;
-    
+    //[SerializeField] SavedPlayerPrefs soPlayerPrefs;
+    //bool onboardingHasRun = false;
+
 
     [Header("Info Button")]
     [SerializeField] GameObject infoCanvas;
@@ -149,13 +152,24 @@ public class UiManager : MonoBehaviour
         //if (locationServiceFailure) localizedImageSavedError.RefreshString();
     }
 
-
     public void OnboardingSequence(GameObject thisObject = null)
     {
+        /*
+        if (onboardingHasRun) return;
+        if (soPlayerPrefs.onboardingHasRun)
+        {
+            onboardingCanvas.SetActive(true);
+            RunOnboardingAgainQuestion.SetActive(true);
+            return;
+        }
+        */
+
         if (onboardingIndex == onboardingSequence.Count)
         {
             onboardingCanvas.SetActive(false);
             if (!audioIsOn) OnAudioButtonPressed();
+            //soPlayerPrefs.onboardingHasRun = true;
+            //onboardingHasRun = true;
             return;
         }
 
@@ -169,11 +183,30 @@ public class UiManager : MonoBehaviour
         {
             onboardingCanvas.SetActive(false);
             if (!audioIsOn) OnAudioButtonPressed();
+            //soPlayerPrefs.onboardingHasRun = true;
+            //onboardingHasRun = true;
         }
 
         onboardingIndex++;
     }
 
+    /*
+    public void PlayOnboardingAgainQuestion(bool answer)
+    {
+        RunOnboardingAgainQuestion.SetActive(false);
+        onboardingCanvas.SetActive(false);
+
+        if (answer)
+        {
+            soPlayerPrefs.onboardingHasRun = false;
+            OnboardingSequence();
+        }
+        else
+        {
+            onboardingHasRun = true;
+        }
+    }
+    */
 
     public void OnContinueClicked()
     {

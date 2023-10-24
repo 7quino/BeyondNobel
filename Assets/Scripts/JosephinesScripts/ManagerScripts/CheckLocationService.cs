@@ -68,7 +68,7 @@ public class CheckLocationService : MonoBehaviour
         if (!_privancyPromptOk) return;
         if (CheckARSession.Instance.isReturning) return;
         if (ARSession.state != ARSessionState.SessionInitializing && ARSession.state != ARSessionState.SessionTracking) return;
-        if (_localisationServiceOk) return;
+        if (_localisationServiceOk && Input.location.status == LocationServiceStatus.Running) return;
 
         // Check feature support and enable Geospatial API when it's supported.
         var featureSupport = EarthManager.IsGeospatialModeSupported(GeospatialMode.Enabled);
@@ -173,7 +173,11 @@ public class CheckLocationService : MonoBehaviour
             onDebugMessage.Invoke("Ready to start game");
         }
 
-        if (isSessionReady) { onLocationServiceSuccess.Invoke(); }
+        if (isSessionReady) 
+        { 
+            onLocationServiceSuccess.Invoke();
+            _localisationServiceOk = true;
+        }
     }
 
 

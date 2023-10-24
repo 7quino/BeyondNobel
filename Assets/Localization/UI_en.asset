@@ -62,14 +62,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 960981557248
-    m_Localized: "2. Toggle the prize buttons\n to show/hide experiences and \naudio
-      buttons to learn more!"
+    m_Localized: "2. Toggle the prize buttons \nto show/hide experiences and \nlitsen
+      to the audio stories!"
     m_Metadata:
       m_Items: []
   - m_Id: 1006846271488
     m_Localized: "Beyond Nobel is an augmented reality app that uses your camera
       to display 3D content in the real world. \n\nToogle the prize buttons to show/hide
-      experiences and audio buttons to learn more!"
+      experiences and listen to the audio stories!"
     m_Metadata:
       m_Items: []
   - m_Id: 1033777897472
@@ -217,6 +217,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2916725078089728
     m_Localized: Go back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316418450808832
+    m_Localized: Go through onboarding again?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316493054894080
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3316529444675584
+    m_Localized: No
     m_Metadata:
       m_Items: []
   references:
