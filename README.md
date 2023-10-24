@@ -24,9 +24,9 @@ Unity Project
  - Every experience is anchored at a specific geolocation, which can be manipulated to anyones need
 
 Credits
- - Josephine: UI/UX, Gameplay programming, Localisation, 2D Graphics design, VFX
+ - Josephine: Gameplay programming, Localisation, UI/UX, 2D Graphics design, VFX
  - Duane: VFX, 3D-modelling, Programming
  - Heba: VFX, Programming, Documentation
- - Feinish: 3D-modelling, VFX, Programming
+ - Feinish: 3D-modelling, VFX
  - Riley: Marketing strategy, VFX, 3D-modelling, Programming
  - Dino: Localisation, VFX, programming, documentation
