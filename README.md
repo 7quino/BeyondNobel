@@ -28,5 +28,5 @@ Credits
  - Duane: VFX, 3D-modelling, Programming
  - Heba: VFX, Programming, Documentation
  - Feinish: 3D-modelling, VFX, Programming
- - Riley: VFX, 3D-modelling, Programming
+ - Riley: Marketing strategy, VFX, 3D-modelling, Programming
  - Dino: Localisation, VFX, programming, documentation
