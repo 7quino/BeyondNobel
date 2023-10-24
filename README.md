@@ -14,8 +14,8 @@ Features
 
 Planned features
   - WebXR version for easy access to the app through the browser
-  - Remote access (?)
-  - 
+  - Published on App Store and Google Play
+  - More experiences
 
 Unity Project
  - Editor version: 2021.3.24f1 LTS
@@ -24,9 +24,9 @@ Unity Project
  - Every experience is anchored at a specific geolocation, which can be manipulated to anyones need
 
 Credits
- - Josephine: UI/UX, Gameplay programming, 2D Graphics design
- - Duane: UX, Gameplay programming
- - Heba: Programming, VFX, Documentation
- - Feinish: Programming
- - Riley: Product owner, programming
+ - Josephine: UI/UX, Gameplay programming, Localisation, 2D Graphics design, VFX
+ - Duane: VFX, 3D-modelling, Programming
+ - Heba: VFX, Programming, Documentation
+ - Feinish: 3D-modelling, VFX, Programming
+ - Riley: VFX, 3D-modelling, Programming
  - Dino: Localisation, VFX, programming, documentation
