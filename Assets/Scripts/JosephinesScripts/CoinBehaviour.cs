@@ -63,7 +63,6 @@ public class CoinBehaviour : MonoBehaviour
         if (transform.position.y < (square.transform.position.y - 1))
         {
             Destroy(gameObject);
-            Debug.Log("destroyed");
         }
     }
 }

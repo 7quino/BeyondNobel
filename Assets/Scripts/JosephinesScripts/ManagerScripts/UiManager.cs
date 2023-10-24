@@ -10,7 +10,6 @@ using TMPro;
 using System.IO;
 using System;
 using UnityEngine.Localization;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 
 public class UiManager : MonoBehaviour
 {
@@ -45,9 +44,11 @@ public class UiManager : MonoBehaviour
     bool _locationServiceIsFinnished = false;
 
     [Header("Onboarding Sequance")]
+    [SerializeField] GameObject onboardingCanvas;
     [SerializeField] List<GameObject> onboardingSequence = new List<GameObject>();
     [SerializeField] GameObject saveButton;
     [SerializeField] GameObject shareButton;
+    [SerializeField] GameObject throwButton;
     [SerializeField] int onboardingIndex = 0;
     GameObject pressedPrizeButton = null;
     
@@ -128,8 +129,9 @@ public class UiManager : MonoBehaviour
 
 #if UNITY_EDITOR
         locationServiceMessageCanvas.SetActive(false);
-        OnboardingSequence();
 #endif
+
+        OnboardingSequence();
     }
 
     public void OnLocationServiceFinnished()
@@ -139,11 +141,9 @@ public class UiManager : MonoBehaviour
         if (!locationServiceSuccess && !locationServiceFailure) return;
         
         locationServiceMessageCanvas.SetActive(false);
-        OnboardingSequence();
 
-        if (_locationServiceIsFinnished) return;
-        _locationServiceIsFinnished = true;
-
+        //if (_locationServiceIsFinnished) return;
+        //_locationServiceIsFinnished = true;
         //localizedStringUseEarphones.RefreshString();
         //if (locationServiceSuccess) localizedStringLocationSuccess.RefreshString();
         //if (locationServiceFailure) localizedImageSavedError.RefreshString();
@@ -152,11 +152,25 @@ public class UiManager : MonoBehaviour
 
     public void OnboardingSequence(GameObject thisObject = null)
     {
+        if (onboardingIndex == onboardingSequence.Count)
+        {
+            onboardingCanvas.SetActive(false);
+            if (!audioIsOn) OnAudioButtonPressed();
+            return;
+        }
+
+        if (onboardingIndex == 0) onboardingCanvas.SetActive(true);
         if (onboardingIndex == 1) pressedPrizeButton = thisObject;
         if (onboardingIndex == 2 && thisObject != pressedPrizeButton) return;
 
         if (onboardingIndex != 0) onboardingSequence[onboardingIndex - 1].SetActive(false);
         if (onboardingIndex != onboardingSequence.Count) onboardingSequence[onboardingIndex].SetActive(true);
+        if (onboardingIndex == 6 && thisObject == throwButton)
+        {
+            onboardingCanvas.SetActive(false);
+            if (!audioIsOn) OnAudioButtonPressed();
+        }
+
         onboardingIndex++;
     }
 
@@ -252,6 +266,7 @@ public class UiManager : MonoBehaviour
     void OnEnable()
     {
         introCanvas.SetActive(true);
+        onboardingCanvas.SetActive(false);
         popUpMessage.SetActive(false);
         privacyPromptCanvas.SetActive(false);
         arViewCanvas.SetActive(false);
