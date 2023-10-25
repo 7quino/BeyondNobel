@@ -25,7 +25,7 @@ Unity Project
 
 Credits
  - Josephine: Gameplay programming, Geospatial API, UI/UX, 2D Graphics design, Development economics experience: shaders, programming
- - Duane: Development litterature experience: VFX, 3D-modelling, Programming
+ - Duane: Research Geospatial API & Streetscape SDK, Development litterature experience: VFX, 3D-modelling, Programming, Shaders
  - Heba: Development chemistry experience: VFX, Programming, Documentation
  - Feinish: Development medicine experience: 3D-modelling, VFX
  - Riley: Marketing strategy, Development physics experience: VFX, 3D-modelling, Programming
